@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Hero {
+  id              Int     @id @default(1)
+  heading         String
+  subheading      String
+  backgroundImage String
+}
+
+model About {
+  id            Int     @id @default(1)
+  heading       String
+  subheading    String
+  content       String
+  image         String
+  yearsExp      String
+  projectsCount String
+  profileName   String @default("Ar. Komal Amle")
+  profileTitle  String @default("Principal Architect")
+}
+
+model Project {
+  id          Int            @id @default(autoincrement())
+  title       String
+  category    String
+  image       String
+  description String?
+  year        String?
+  location    String?
+  area        String?
+  gallery     ProjectImage[]
+}
+
+model ProjectImage {
+  id        Int     @id @default(autoincrement())
+  url       String
+  projectId Int
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model Contact {
+  id       Int    @id @default(1)
+  email    String
+  phone    String
+  address  String
+  ctaText  String @default("Let's build something beautiful.")
+  ctaSub   String @default("Available for new projects and collaborations.")
+  instagram String @default("#")
+  linkedin  String @default("#")
+  behance   String @default("#")
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  password String
+}
