@@ -71,5 +71,21 @@ export const content: {
       behance: "https://behance.net",
     }
   },
-  projects: []
+  projects: [
+    {
+      id: 1,
+      title: "Balaji Temple",
+      category: "Religious Architecture",
+      image: "/uploads/Balaji Temple.jpeg",
+      description: "Proposed design for the Balaji Temple, focusing on traditional architectural elements blended with modern structural integrity. The design emphasizes spiritual serenity, grand entranceways, and intricate stone carvings reflecting the deity's heritage.",
+      year: "2024",
+      location: "India",
+      area: "TBD",
+      gallery: [
+        "/uploads/Balaji Temple(1).jpeg",
+        "/uploads/Balaji Temple(2).jpeg",
+        "/uploads/Balaji Temple(3).jpeg"
+      ]
+    }
+  ]
 };
