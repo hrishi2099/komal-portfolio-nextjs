@@ -64,8 +64,7 @@ export const content: {
     ctaSub: "Available for new projects and collaborations.",
     email: "hello@komal.design",
     phone: "+1 (555) 123-4567",
-    address: "123 Design Avenue
-Creative District, NY 10012",
+    address: "123 Design Avenue\nCreative District, NY 10012",
     social: {
       instagram: "https://instagram.com",
       linkedin: "https://linkedin.com",
@@ -121,7 +120,8 @@ Creative District, NY 10012",
         "/projects/shambhu-srushti.jpg",
         "/projects/shambhu-srushti-1.jpg",
         "/projects/shambhu-srushti-2.jpg",
-        "/projects/shambhu-srushti-3.jpg"
+        "/projects/shambhu-srushti-3.jpg",
+        "/projects/shambhu-srushti-c.jpg" // Added C Photo
       ]
     }
   ]
