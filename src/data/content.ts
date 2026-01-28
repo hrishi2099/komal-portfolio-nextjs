@@ -76,15 +76,15 @@ export const content: {
       id: 1,
       title: "Balaji Temple",
       category: "Religious Architecture",
-      image: "/uploads/Balaji Temple.jpeg",
-      description: "Proposed design for the Balaji Temple, focusing on traditional architectural elements blended with modern structural integrity. The design emphasizes spiritual serenity, grand entranceways, and intricate stone carvings reflecting the deity's heritage.",
+      image: "/uploads/balaji-temple.jpeg",
+      description: "Proposed design for the Balaji Temple, focusing on traditional architectural elements blended with modern structural integrity. The design emphasizes spiritual serenity, grand entranceways, and intricate stone carvings reflecting the deity's heritage. (Please update this text from the docx file).",
       year: "2024",
       location: "India",
       area: "TBD",
       gallery: [
-        "/uploads/Balaji Temple(1).jpeg",
-        "/uploads/Balaji Temple(2).jpeg",
-        "/uploads/Balaji Temple(3).jpeg"
+        "/uploads/balaji-temple-1.jpeg",
+        "/uploads/balaji-temple-2.jpeg",
+        "/uploads/balaji-temple-3.jpeg"
       ]
     }
   ]
