@@ -1,14 +1,21 @@
+"use client"; // Needs to be client component for interactivity
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, MapPin, Calendar, Ruler } from "lucide-react";
-import { content } from "@/data/content";
+import { content, Project } from "@/data/content"; // Import Project type
+import { useState } from "react";
+import ImageViewer from "@/components/ImageViewer";
+import { useParams } from "next/navigation"; // Use useParams in client components
 
-export default async function ProjectPage({ params }: { params: { id: string } }) {
-  // Await the params object
-  const { id } = await params;
+export default function ProjectPage() {
+  const params = useParams();
+  const id = params?.id as string;
   const projectId = parseInt(id);
+  
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
   const project = content.projects.find(p => p.id === projectId);
 
@@ -24,17 +31,19 @@ export default async function ProjectPage({ params }: { params: { id: string } }
   return (
     <main className="min-h-screen bg-white text-gray-900">
       <Navbar />
+      <ImageViewer src={selectedImage} onClose={() => setSelectedImage(null)} />
       
       {/* Hero Image */}
       <div className="relative h-[60vh] md:h-[80vh] w-full bg-sage/50">
          <div 
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-center cursor-pointer"
             style={{ backgroundImage: `url('${project.image}')` }}
+            onClick={() => setSelectedImage(project.image)}
          />
-         <div className="absolute inset-0 bg-black/30" />
-         <div className="absolute bottom-0 left-0 w-full p-8 md:p-16 text-white">
+         <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+         <div className="absolute bottom-0 left-0 w-full p-8 md:p-16 text-white pointer-events-none">
             <div className="container mx-auto">
-                <Link href="/#projects" className="inline-flex items-center text-sm uppercase tracking-widest mb-6 hover:text-gray-300 transition-colors">
+                <Link href="/#projects" className="inline-flex items-center text-sm uppercase tracking-widest mb-6 hover:text-gray-300 transition-colors pointer-events-auto">
                     <ArrowLeft size={16} className="mr-2" /> Back to Projects
                 </Link>
                 <h1 className="text-4xl md:text-7xl font-serif font-bold mb-2">{project.title}</h1>
@@ -88,7 +97,11 @@ export default async function ProjectPage({ params }: { params: { id: string } }
                  <h3 className="text-3xl font-serif mb-12 text-black">Project Gallery</h3>
                  <div className="grid md:grid-cols-2 gap-8">
                      {project.gallery.map((img, index) => (
-                         <div key={index} className="relative h-[400px] md:h-[600px] w-full bg-sage/20 overflow-hidden group">
+                         <div 
+                            key={index} 
+                            className="relative h-[400px] md:h-[600px] w-full bg-sage/20 overflow-hidden group cursor-zoom-in"
+                            onClick={() => setSelectedImage(img)}
+                         >
                              <div 
                                 className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                                 style={{ backgroundImage: `url('${img}')` }}

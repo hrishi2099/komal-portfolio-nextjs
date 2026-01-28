@@ -82,6 +82,7 @@ export const content: {
       location: "India",
       area: "TBD",
       gallery: [
+        "/projects/balaji-temple.jpeg", // Added cover image to gallery
         "/projects/balaji-temple-1.jpeg",
         "/projects/balaji-temple-2.jpeg",
         "/projects/balaji-temple-3.jpeg"
