@@ -64,7 +64,8 @@ export const content: {
     ctaSub: "Available for new projects and collaborations.",
     email: "hello@komal.design",
     phone: "+1 (555) 123-4567",
-    address: "123 Design Avenue\nCreative District, NY 10012",
+    address: "123 Design Avenue
+Creative District, NY 10012",
     social: {
       instagram: "https://instagram.com",
       linkedin: "https://linkedin.com",
@@ -92,7 +93,7 @@ export const content: {
       id: 2,
       title: "Lata Mangeshkar Music Academy",
       category: "Institutional Architecture",
-      image: "/projects/lata-academy-6.jpg", // Updated Cover Image
+      image: "/projects/lata-academy-6.jpg",
       description: "A tribute to the legendary Nightingale of India. This Music Academy is designed to be a harmonious blend of acoustic excellence and architectural beauty. The structure features dedicated practice halls, a grand auditorium, and open-air performance spaces, all inspired by the rhythm and flow of music. (Please update this text from the docx file).",
       year: "2023",
       location: "India",
@@ -105,6 +106,22 @@ export const content: {
         "/projects/lata-academy-4.jpg",
         "/projects/lata-academy-5.jpg",
         "/projects/lata-academy-6.jpg"
+      ]
+    },
+    {
+      id: 3,
+      title: "Shambhu Srushti",
+      category: "Memorial & Landscape",
+      image: "/projects/shambhu-srushti.jpg",
+      description: "A monumental project dedicated to Chatrapati Sambhaji Maharaj. This design integrates historical significance with landscape architecture, creating a space for reflection and reverence. The statue stands as a focal point, surrounded by landscaped gardens that narrate the history of the Maratha Empire. (Please update this text from the docx file).",
+      year: "2023",
+      location: "India",
+      area: "TBD",
+      gallery: [
+        "/projects/shambhu-srushti.jpg",
+        "/projects/shambhu-srushti-1.jpg",
+        "/projects/shambhu-srushti-2.jpg",
+        "/projects/shambhu-srushti-3.jpg"
       ]
     }
   ]
