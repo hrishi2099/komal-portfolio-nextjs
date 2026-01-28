@@ -82,7 +82,7 @@ export const content: {
       location: "India",
       area: "TBD",
       gallery: [
-        "/projects/balaji-temple.jpeg", // Added cover image to gallery
+        "/projects/balaji-temple.jpeg",
         "/projects/balaji-temple-1.jpeg",
         "/projects/balaji-temple-2.jpeg",
         "/projects/balaji-temple-3.jpeg"
@@ -92,7 +92,7 @@ export const content: {
       id: 2,
       title: "Lata Mangeshkar Music Academy",
       category: "Institutional Architecture",
-      image: "/projects/lata-academy.jpg",
+      image: "/projects/lata-academy-6.jpg", // Updated Cover Image
       description: "A tribute to the legendary Nightingale of India. This Music Academy is designed to be a harmonious blend of acoustic excellence and architectural beauty. The structure features dedicated practice halls, a grand auditorium, and open-air performance spaces, all inspired by the rhythm and flow of music. (Please update this text from the docx file).",
       year: "2023",
       location: "India",
