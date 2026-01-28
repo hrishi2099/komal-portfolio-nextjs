@@ -62,9 +62,9 @@ export const content: {
   contact: {
     ctaText: "Let's build something beautiful.",
     ctaSub: "Available for new projects and collaborations.",
-    email: "hello@komal.design",
-    phone: "+1 (555) 123-4567",
-    address: "123 Design Avenue\nCreative District, NY 10012",
+    email: "architect.amle@gmail.com",
+    phone: "+91 9158726789",
+    address: "Stature, Sinhgad Road\nPune - 411041",
     social: {
       instagram: "https://instagram.com",
       linkedin: "https://linkedin.com",
@@ -121,7 +121,7 @@ export const content: {
         "/projects/shambhu-srushti-1.jpg",
         "/projects/shambhu-srushti-2.jpg",
         "/projects/shambhu-srushti-3.jpg",
-        "/projects/shambhu-srushti-c.jpg" // Added C Photo
+        "/projects/shambhu-srushti-c.jpg"
       ]
     }
   ]
