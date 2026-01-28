@@ -30,14 +30,14 @@ export default function Navbar() {
       className={clsx(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md",
         isScrolled
-          ? "bg-white/80 dark:bg-black/80 py-4 shadow-sm"
+          ? "bg-white/80 py-4 shadow-sm"
           : "bg-transparent py-6"
       )}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         <Link
           href="/"
-          className="text-2xl font-bold tracking-widest uppercase font-serif"
+          className="text-2xl font-bold tracking-widest uppercase font-serif text-black"
         >
           Ar. Komal Amle
         </Link>
@@ -48,7 +48,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm uppercase tracking-widest hover:text-gray-500 transition-colors"
+              className="text-sm uppercase tracking-widest text-black hover:text-gray-600 transition-colors"
             >
               {link.name}
             </Link>
@@ -72,14 +72,14 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "100vh" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden fixed inset-0 top-[60px] bg-white dark:bg-black z-40 overflow-hidden"
+            className="md:hidden fixed inset-0 top-[60px] bg-sage z-40 overflow-hidden"
           >
             <div className="flex flex-col items-center justify-center h-full space-y-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-2xl font-serif hover:text-gray-500 transition-colors"
+                  className="text-2xl font-serif text-black hover:text-gray-600 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}

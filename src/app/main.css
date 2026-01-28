@@ -1,21 +1,27 @@
 @import "tailwindcss";
 
 :root {
+  /* Force Light Theme Colors */
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Custom Palette */
+  --sage: #CBD5C0;
+  --rose: #CEACA1;
 }
 
 @theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  --color-sage: var(--sage);
+  --color-rose: var(--rose);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* 
+   Removed dark mode media query to enforce the 
+   Sage/Rose/White palette requested by the user.
+*/
 
 body {
   color: var(--foreground);

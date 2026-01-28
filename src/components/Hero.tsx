@@ -58,7 +58,7 @@ export default function Hero({ heading, subheading, backgroundImage }: Props) {
   return (
     <section
       id="hero"
-      className="relative h-screen flex items-center justify-center overflow-hidden bg-stone-100 dark:bg-neutral-900"
+      className="relative h-screen flex items-center justify-center overflow-hidden bg-sage/50"
     >
       <div className="absolute inset-0 z-0 opacity-30 dark:opacity-20">
         <motion.div 
@@ -82,7 +82,7 @@ export default function Hero({ heading, subheading, backgroundImage }: Props) {
                 <div key={index} className="overflow-hidden inline-block align-bottom mx-2 md:mx-0 md:block">
                     <motion.h1
                         variants={itemVariants}
-                        className="text-5xl md:text-8xl font-serif font-bold tracking-tight text-gray-900 dark:text-white leading-tight"
+                        className="text-5xl md:text-8xl font-serif font-bold tracking-tight text-gray-900 leading-tight"
                         dangerouslySetInnerHTML={{ __html: line }}
                     />
                 </div>
@@ -96,7 +96,7 @@ export default function Hero({ heading, subheading, backgroundImage }: Props) {
           variants={{
             visible: { transition: { staggerChildren: 0.03, delayChildren: 1 } }
           }}
-          className="text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto text-gray-700 dark:text-gray-300 flex flex-wrap justify-center gap-x-1.5"
+          className="text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto text-gray-800 flex flex-wrap justify-center gap-x-1.5"
         >
           {subheadingWords.map((word, index) => (
             <motion.span

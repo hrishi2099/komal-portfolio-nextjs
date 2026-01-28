@@ -16,10 +16,10 @@ type Props = {
 
 export default function Projects({ projects }: Props) {
   return (
-    <section id="projects" className="py-24 bg-stone-50 dark:bg-neutral-900">
+    <section id="projects" className="py-24 bg-sage/20">
       <div className="container mx-auto px-6">
         <div className="mb-16">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-rose mb-4">
             Selected Works
           </h2>
           <h3 className="text-4xl font-serif">Featured Projects</h3>
@@ -42,10 +42,10 @@ export default function Projects({ projects }: Props) {
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 </div>
-                <h4 className="text-2xl font-serif mb-1 group-hover:underline decoration-1 underline-offset-4">
+                <h4 className="text-2xl font-serif mb-1 text-black group-hover:underline decoration-1 underline-offset-4">
                   {project.title}
                 </h4>
-                <p className="text-sm text-gray-500 uppercase tracking-wider">
+                <p className="text-sm text-gray-700 uppercase tracking-wider">
                   {project.category}
                 </p>
               </motion.div>
@@ -54,7 +54,7 @@ export default function Projects({ projects }: Props) {
         </div>
         
         <div className="text-center mt-16">
-            <button className="px-8 py-3 border border-black dark:border-white uppercase text-xs tracking-widest hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+            <button className="px-8 py-3 border border-rose text-black dark:border-white uppercase text-xs tracking-widest hover:bg-rose hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
                 View All Projects
             </button>
         </div>

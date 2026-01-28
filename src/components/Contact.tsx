@@ -13,7 +13,7 @@ type Props = {
 
 export default function Contact({ email, phone, address, ctaText, ctaSub }: Props) {
   return (
-    <section id="contact" className="py-24 bg-white dark:bg-black">
+    <section id="contact" className="py-24 bg-white">
       <div className="container mx-auto px-6 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -22,7 +22,7 @@ export default function Contact({ email, phone, address, ctaText, ctaSub }: Prop
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-rose mb-4">
             Get in Touch
           </h2>
           <h3 className="text-4xl font-serif mb-6">{ctaText || "Let's build something beautiful."}</h3>
@@ -91,7 +91,7 @@ export default function Contact({ email, phone, address, ctaText, ctaSub }: Prop
             </div>
             <button 
               type="submit"
-              className="px-8 py-3 bg-black text-white dark:bg-white dark:text-black uppercase text-xs tracking-widest hover:opacity-80 transition-opacity"
+              className="px-8 py-3 bg-rose text-white dark:bg-white dark:text-black uppercase text-xs tracking-widest hover:opacity-80 transition-opacity"
             >
               Send Message
             </button>

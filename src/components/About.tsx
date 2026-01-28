@@ -15,7 +15,7 @@ type Props = {
 
 export default function About({ heading, subheading, content, image, yearsExp, projectsCount, profileName, profileTitle }: Props) {
   return (
-    <section id="about" className="py-24 bg-white dark:bg-black">
+    <section id="about" className="py-24 bg-white">
       <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         
         {/* Text Side */}
@@ -25,7 +25,7 @@ export default function About({ heading, subheading, content, image, yearsExp, p
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-rose mb-4">
             {heading || "Philosophy"}
           </h2>
           <h3 className="text-3xl md:text-5xl font-serif mb-6 leading-tight">
@@ -54,7 +54,7 @@ export default function About({ heading, subheading, content, image, yearsExp, p
           viewport={{ once: true }}
           className="relative group"
         >
-           <div className="relative h-[500px] w-full bg-gray-200 dark:bg-gray-800 overflow-hidden">
+           <div className="relative h-[500px] w-full bg-sage/30 dark:bg-gray-800 overflow-hidden">
                 <div 
                     className="w-full h-full bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-700"
                     style={{ backgroundImage: `url('${image || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2000&auto=format&fit=crop"}')` }} 
