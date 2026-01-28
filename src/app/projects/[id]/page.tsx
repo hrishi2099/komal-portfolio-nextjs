@@ -1,45 +1,32 @@
-import { prisma } from "@/lib/prisma";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, MapPin, Calendar, Ruler, ArrowRight } from "lucide-react";
-
-export const dynamic = 'force-dynamic';
+import { ArrowLeft, MapPin, Calendar, Ruler } from "lucide-react";
+import { content } from "@/data/content";
 
 export default async function ProjectPage({ params }: { params: { id: string } }) {
-  // Await the params object before accessing its properties
+  // Await the params object
   const { id } = await params;
+  const projectId = parseInt(id);
   
-  const project = await prisma.project.findUnique({
-    where: { id: parseInt(id) },
-    include: { gallery: true },
-  });
+  const project = content.projects.find(p => p.id === projectId);
 
   if (!project) {
     return notFound();
   }
 
   // Get next/prev projects for navigation
-  const nextProject = await prisma.project.findFirst({
-      where: { id: { gt: project.id } },
-      orderBy: { id: 'asc' }
-  });
-  
-  const prevProject = await prisma.project.findFirst({
-      where: { id: { lt: project.id } },
-      orderBy: { id: 'desc' }
-  });
-  
-  const contactData = await prisma.contact.findFirst();
+  const currentIndex = content.projects.findIndex(p => p.id === projectId);
+  const nextProject = content.projects[currentIndex + 1] || null;
+  const prevProject = content.projects[currentIndex - 1] || null;
 
   return (
-    <main className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100">
+    <main className="min-h-screen bg-white text-gray-900">
       <Navbar />
       
       {/* Hero Image */}
-      <div className="relative h-[60vh] md:h-[80vh] w-full bg-gray-200">
+      <div className="relative h-[60vh] md:h-[80vh] w-full bg-sage/50">
          <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url('${project.image}')` }}
@@ -59,7 +46,7 @@ export default async function ProjectPage({ params }: { params: { id: string } }
       <div className="container mx-auto px-6 py-24">
          <div className="grid md:grid-cols-3 gap-16">
             {/* Sidebar / Metadata */}
-            <div className="md:col-span-1 space-y-8 border-t border-black dark:border-white pt-8">
+            <div className="md:col-span-1 space-y-8 border-t border-black pt-8">
                {project.year && (
                    <div>
                        <h3 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-1 flex items-center gap-2">
@@ -88,23 +75,23 @@ export default async function ProjectPage({ params }: { params: { id: string } }
 
             {/* Main Content */}
             <div className="md:col-span-2">
-                <h2 className="text-2xl font-serif mb-6">About the Project</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed whitespace-pre-line">
+                <h2 className="text-2xl font-serif mb-6 text-black">About the Project</h2>
+                <p className="text-lg text-gray-700 leading-relaxed whitespace-pre-line">
                     {project.description || "No description available."}
                 </p>
             </div>
          </div>
 
          {/* Gallery */}
-         {project.gallery.length > 0 && (
+         {project.gallery && project.gallery.length > 0 && (
              <div className="mt-32">
-                 <h3 className="text-3xl font-serif mb-12">Project Gallery</h3>
+                 <h3 className="text-3xl font-serif mb-12 text-black">Project Gallery</h3>
                  <div className="grid md:grid-cols-2 gap-8">
-                     {project.gallery.map((img) => (
-                         <div key={img.id} className="relative h-[400px] md:h-[600px] w-full bg-gray-100 overflow-hidden group">
+                     {project.gallery.map((img, index) => (
+                         <div key={index} className="relative h-[400px] md:h-[600px] w-full bg-sage/20 overflow-hidden group">
                              <div 
                                 className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                                style={{ backgroundImage: `url('${img.url}')` }}
+                                style={{ backgroundImage: `url('${img}')` }}
                              />
                          </div>
                      ))}
@@ -113,18 +100,18 @@ export default async function ProjectPage({ params }: { params: { id: string } }
          )}
          
          {/* Navigation Footer */}
-         <div className="mt-32 border-t border-gray-200 dark:border-gray-800 pt-16 flex justify-between items-center">
+         <div className="mt-32 border-t border-gray-200 pt-16 flex justify-between items-center">
              {prevProject ? (
                  <Link href={`/projects/${prevProject.id}`} className="group">
-                    <span className="block text-xs uppercase tracking-widest text-gray-500 mb-2 group-hover:text-black dark:group-hover:text-white transition-colors">Previous Project</span>
-                    <span className="text-2xl font-serif">{prevProject.title}</span>
+                    <span className="block text-xs uppercase tracking-widest text-gray-500 mb-2 group-hover:text-black transition-colors">Previous Project</span>
+                    <span className="text-2xl font-serif text-black">{prevProject.title}</span>
                  </Link>
              ) : <div />}
 
              {nextProject ? (
                  <Link href={`/projects/${nextProject.id}`} className="group text-right">
-                    <span className="block text-xs uppercase tracking-widest text-gray-500 mb-2 group-hover:text-black dark:group-hover:text-white transition-colors">Next Project</span>
-                    <span className="text-2xl font-serif">{nextProject.title}</span>
+                    <span className="block text-xs uppercase tracking-widest text-gray-500 mb-2 group-hover:text-black transition-colors">Next Project</span>
+                    <span className="text-2xl font-serif text-black">{nextProject.title}</span>
                  </Link>
              ) : <div />}
          </div>
@@ -132,9 +119,9 @@ export default async function ProjectPage({ params }: { params: { id: string } }
       </div>
 
       <Footer 
-        instagram={contactData?.instagram}
-        linkedin={contactData?.linkedin}
-        behance={contactData?.behance}
+        instagram={content.contact.social.instagram}
+        linkedin={content.contact.social.linkedin}
+        behance={content.contact.social.behance}
       />
     </main>
   );
