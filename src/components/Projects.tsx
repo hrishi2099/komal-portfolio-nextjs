@@ -2,19 +2,16 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-
-type Project = {
-    id: number;
-    title: string;
-    category: string;
-    image: string;
-};
+import { Project } from "@/data/content";
 
 type Props = {
     projects: Project[];
 };
 
 export default function Projects({ projects }: Props) {
+  // Show only the first 4 projects on the homepage
+  const featuredProjects = projects.slice(0, 4);
+
   return (
     <section id="projects" className="py-24 bg-sage/20">
       <div className="container mx-auto px-6">
@@ -22,11 +19,11 @@ export default function Projects({ projects }: Props) {
           <h2 className="text-sm font-bold uppercase tracking-widest text-rose mb-4">
             Selected Works
           </h2>
-          <h3 className="text-4xl font-serif">Featured Projects</h3>
+          <h3 className="text-4xl font-serif text-black">Featured Projects</h3>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <Link key={project.id} href={`/projects/${project.id}`}>
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
@@ -38,7 +35,7 @@ export default function Projects({ projects }: Props) {
                 <div className="relative h-[400px] overflow-hidden mb-4">
                   <div
                     className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                    style={{ backgroundImage: `url(${project.image})` }}
+                    style={{ backgroundImage: `url('${project.image}')` }}
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 </div>
@@ -54,9 +51,11 @@ export default function Projects({ projects }: Props) {
         </div>
         
         <div className="text-center mt-16">
-            <button className="px-8 py-3 border border-rose text-black dark:border-white uppercase text-xs tracking-widest hover:bg-rose hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
-                View All Projects
-            </button>
+            <Link href="/projects">
+                <button className="px-8 py-3 border border-rose text-black uppercase text-xs tracking-widest hover:bg-rose hover:text-white transition-colors">
+                    View All Projects
+                </button>
+            </Link>
         </div>
       </div>
     </section>
