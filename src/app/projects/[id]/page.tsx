@@ -8,31 +8,9 @@ import { ArrowLeft, MapPin, Calendar, Ruler } from "lucide-react";
 import { content } from "@/data/content";
 import { useState } from "react";
 import ImageViewer from "@/components/ImageViewer";
+import ParallaxGallery from "@/components/ParallaxGallery"; // Import new component
 import { useParams } from "next/navigation";
-import { motion, Variants } from "framer-motion";
-
-// Animation Variants
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { y: 30, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-};
+import { motion } from "framer-motion";
 
 export default function ProjectPage() {
   const params = useParams();
@@ -134,35 +112,11 @@ export default function ProjectPage() {
             </motion.div>
          </div>
 
-         {/* Gallery */}
+         {/* Parallax Gallery */}
          {project.gallery && project.gallery.length > 0 && (
              <div className="mt-32">
                  <h3 className="text-3xl font-serif mb-12 text-black">Project Gallery</h3>
-                 <motion.div 
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="columns-1 md:columns-2 gap-8 space-y-8"
-                 >
-                     {project.gallery.map((img, index) => (
-                         <motion.div 
-                            key={index} 
-                            variants={itemVariants}
-                            className="break-inside-avoid relative w-full bg-sage/20 overflow-hidden group cursor-zoom-in"
-                            onClick={() => setSelectedImage(img)}
-                         >
-                             <div className="w-full h-auto">
-                                <img 
-                                    src={img} 
-                                    alt={`Gallery image ${index + 1}`} 
-                                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                                    loading="lazy"
-                                />
-                             </div>
-                         </motion.div>
-                     ))}
-                 </motion.div>
+                 <ParallaxGallery images={project.gallery} onImageClick={setSelectedImage} />
              </div>
          )}
          
