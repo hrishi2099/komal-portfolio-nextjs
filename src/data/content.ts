@@ -123,6 +123,25 @@ export const content: {
         "/projects/shambhu-srushti-3.jpg",
         "/projects/shambhu-srushti-c.jpg"
       ]
+    },
+    {
+      id: 4,
+      title: "Warje Project",
+      category: "Commercial & Office",
+      image: "/projects/warje-cover.png",
+      description: "A comprehensive design project in Warje, featuring detailed floor plans and 3D visualizations. This space is optimized for functional flow and aesthetic appeal, incorporating modern office design principles with practical spatial planning. (Please update description).",
+      year: "2023",
+      location: "Warje, Pune",
+      area: "TBD",
+      gallery: [
+        "/projects/warje-cover.png",
+        "/projects/warje-view-1.jpg",
+        "/projects/warje-view-2.jpg",
+        "/projects/warje-1.png",
+        "/projects/warje-2.png",
+        "/projects/warje-plan.png",
+        "/projects/warje-floor-plan.png"
+      ]
     }
   ]
 };
