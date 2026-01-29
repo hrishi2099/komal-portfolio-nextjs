@@ -129,7 +129,7 @@ export const content: {
       title: "Warje Project",
       category: "Commercial & Office",
       image: "/projects/warje-cover.png",
-      description: "A comprehensive design project in Warje, featuring detailed floor plans and 3D visualizations. This space is optimized for functional flow and aesthetic appeal, incorporating modern office design principles with practical spatial planning. (Please update description).",
+      description: "A comprehensive design project in Warje, featuring detailed floor plans and 3D visualizations. This space is optimized for functional flow and aesthetic appeal, incorporating modern office design principles with practical spatial planning.",
       year: "2023",
       location: "Warje, Pune",
       area: "TBD",
