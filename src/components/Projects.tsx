@@ -28,6 +28,7 @@ export default function Projects({ projects }: Props) {
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileTap={{ scale: 0.98 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 viewport={{ once: true }}
                 className="group cursor-pointer"
@@ -54,12 +55,15 @@ export default function Projects({ projects }: Props) {
         <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 -mx-6 px-6 no-scrollbar">
           {featuredProjects.map((project) => (
             <Link key={project.id} href={`/projects/${project.id}`} className="min-w-[85vw] snap-center">
-              <div className="relative h-[350px] overflow-hidden mb-4 shadow-sm">
+              <motion.div 
+                whileTap={{ scale: 0.98 }}
+                className="relative h-[350px] overflow-hidden mb-4 shadow-sm"
+              >
                 <div
                   className="w-full h-full bg-cover bg-center"
                   style={{ backgroundImage: `url('${project.image}')` }}
                 />
-              </div>
+              </motion.div>
               <h4 className="text-xl font-serif mb-1 text-black">
                 {project.title}
               </h4>
@@ -72,9 +76,12 @@ export default function Projects({ projects }: Props) {
         
         <div className="text-center mt-8 md:mt-16">
             <Link href="/projects">
-                <button className="px-8 py-3 border border-rose text-black uppercase text-xs tracking-widest hover:bg-rose hover:text-white transition-colors">
+                <motion.button 
+                    whileTap={{ scale: 0.95 }}
+                    className="px-8 py-3 border border-rose text-black uppercase text-xs tracking-widest hover:bg-rose hover:text-white transition-colors"
+                >
                     View All Projects
-                </button>
+                </motion.button>
             </Link>
         </div>
       </div>

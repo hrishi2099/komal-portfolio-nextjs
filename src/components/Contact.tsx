@@ -89,12 +89,13 @@ export default function Contact({ email, phone, address, ctaText, ctaSub }: Prop
                 className="w-full border-b border-gray-300 dark:border-gray-700 bg-transparent py-2 focus:outline-none focus:border-black dark:focus:border-white transition-colors resize-none"
               ></textarea>
             </div>
-            <button 
+            <motion.button 
+              whileTap={{ scale: 0.95 }}
               type="submit"
               className="px-8 py-3 bg-rose text-white dark:bg-white dark:text-black uppercase text-xs tracking-widest hover:opacity-80 transition-opacity"
             >
               Send Message
-            </button>
+            </motion.button>
           </form>
         </div>
       </div>
