@@ -9,20 +9,20 @@ type Props = {
 };
 
 export default function Projects({ projects }: Props) {
-  // Show only the first 4 projects on the homepage
   const featuredProjects = projects.slice(0, 4);
 
   return (
-    <section id="projects" className="py-24 bg-sage/20">
+    <section id="projects" className="py-16 md:py-24 bg-sage/20">
       <div className="container mx-auto px-6">
-        <div className="mb-16">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-rose mb-4">
+        <div className="mb-8 md:mb-16">
+          <h2 className="text-xs md:text-sm font-bold uppercase tracking-widest text-rose mb-2 md:mb-4">
             Selected Works
           </h2>
-          <h3 className="text-4xl font-serif text-black">Featured Projects</h3>
+          <h3 className="text-3xl md:text-4xl font-serif text-black">Featured Projects</h3>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Desktop Grid (Hidden on Mobile) */}
+        <div className="hidden md:grid md:grid-cols-2 gap-8">
           {featuredProjects.map((project, index) => (
             <Link key={project.id} href={`/projects/${project.id}`}>
               <motion.div
@@ -49,8 +49,28 @@ export default function Projects({ projects }: Props) {
             </Link>
           ))}
         </div>
+
+        {/* Mobile Horizontal Scroll (Visible only on Mobile) */}
+        <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 -mx-6 px-6 no-scrollbar">
+          {featuredProjects.map((project) => (
+            <Link key={project.id} href={`/projects/${project.id}`} className="min-w-[85vw] snap-center">
+              <div className="relative h-[350px] overflow-hidden mb-4 shadow-sm">
+                <div
+                  className="w-full h-full bg-cover bg-center"
+                  style={{ backgroundImage: `url('${project.image}')` }}
+                />
+              </div>
+              <h4 className="text-xl font-serif mb-1 text-black">
+                {project.title}
+              </h4>
+              <p className="text-xs text-gray-700 uppercase tracking-wider">
+                {project.category}
+              </p>
+            </Link>
+          ))}
+        </div>
         
-        <div className="text-center mt-16">
+        <div className="text-center mt-8 md:mt-16">
             <Link href="/projects">
                 <button className="px-8 py-3 border border-rose text-black uppercase text-xs tracking-widest hover:bg-rose hover:text-white transition-colors">
                     View All Projects
