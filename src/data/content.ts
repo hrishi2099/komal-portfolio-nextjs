@@ -55,7 +55,7 @@ export const content: {
     profileName: "Ar. Komal Amle",
     profileTitle: "Principal Architect",
     stats: {
-      yearsExp: "5+",
+      yearsExp: "4+",
       projectsCount: "20+",
     }
   },
