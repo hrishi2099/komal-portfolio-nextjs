@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
+import ArchitecturalGrid from "./ArchitecturalGrid";
 
 type Props = {
   heading?: string;
@@ -68,6 +69,7 @@ export default function Hero({ heading, subheading, backgroundImage }: Props) {
           className="w-full h-full bg-cover bg-center"
           style={{ backgroundImage: `url('${backgroundImage || "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070&auto=format&fit=crop"}')` }} 
         />
+        <ArchitecturalGrid />
       </div>
 
       <div className="container mx-auto px-6 relative z-10 text-center">
