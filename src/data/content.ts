@@ -129,7 +129,7 @@ export const content: {
       title: "Warje Project",
       category: "Commercial & Office",
       image: "/projects/warje-cover.png",
-      description: "A comprehensive design project in Warje, featuring detailed floor plans and 3D visualizations. This space is optimized for functional flow and aesthetic appeal, incorporating modern office design principles with practical spatial planning.",
+      description: "A comprehensive design project in Warje, featuring detailed floor plans and 3D visualizations. This space is optimized for functional flow and aesthetic appeal, incorporating modern office design principles with practical spatial planning. (Please update description).",
       year: "2023",
       location: "Warje, Pune",
       area: "TBD",
@@ -162,6 +162,23 @@ export const content: {
         "/projects/bedroom-6.jpg",
         "/projects/bedroom-7.jpg",
         "/projects/bedroom-8.jpg"
+      ]
+    },
+    {
+      id: 6,
+      title: "Suresh Khudam Residence",
+      category: "Residential Interior",
+      image: "/projects/suresh-living-1.jpg",
+      description: "Interior design for the Suresh Khudam residence, featuring a modern kitchen and living area. The design emphasizes clean lines, functional storage, and a warm color palette to create a welcoming family atmosphere.",
+      year: "2023",
+      location: "Pune, India",
+      area: "TBD",
+      gallery: [
+        "/projects/suresh-living-1.jpg",
+        "/projects/suresh-kitchen-1.jpg",
+        "/projects/suresh-kitchen-2.jpg",
+        "/projects/suresh-kitchen-3.jpg",
+        "/projects/suresh-kitchen-4.jpg"
       ]
     }
   ]
