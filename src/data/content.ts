@@ -129,7 +129,7 @@ export const content: {
       title: "Warje Project",
       category: "Commercial & Office",
       image: "/projects/warje-cover.png",
-      description: "A comprehensive design project in Warje, featuring detailed floor plans and 3D visualizations. This space is optimized for functional flow and aesthetic appeal, incorporating modern office design principles with practical spatial planning. (Please update description).",
+      description: "A comprehensive design project in Warje, featuring detailed floor plans and 3D visualizations. This space is optimized for functional flow and aesthetic appeal, incorporating modern office design principles with practical spatial planning.",
       year: "2023",
       location: "Warje, Pune",
       area: "TBD",
@@ -141,6 +141,27 @@ export const content: {
         "/projects/warje-2.png",
         "/projects/warje-plan.png",
         "/projects/warje-floor-plan.png"
+      ]
+    },
+    {
+      id: 5,
+      title: "Modern Bedroom Interior",
+      category: "Residential Interior",
+      image: "/projects/bedroom-cover.jpg",
+      description: "A sophisticated bedroom design that balances comfort with modern luxury. The palette uses soft neutrals and warm lighting to create a restful sanctuary. Custom joinery maximizes storage without cluttering the visual space.",
+      year: "2023",
+      location: "Pune, India",
+      area: "TBD",
+      gallery: [
+        "/projects/bedroom-cover.jpg",
+        "/projects/bedroom-1.jpg",
+        "/projects/bedroom-2.jpg",
+        "/projects/bedroom-3.jpg",
+        "/projects/bedroom-4.jpg",
+        "/projects/bedroom-5.jpg",
+        "/projects/bedroom-6.jpg",
+        "/projects/bedroom-7.jpg",
+        "/projects/bedroom-8.jpg"
       ]
     }
   ]
