@@ -95,17 +95,23 @@ export default function ProjectPage() {
          {project.gallery && project.gallery.length > 0 && (
              <div className="mt-32">
                  <h3 className="text-3xl font-serif mb-12 text-black">Project Gallery</h3>
-                 <div className="grid md:grid-cols-2 gap-8">
+                 <div className="columns-1 md:columns-2 gap-8 space-y-8">
                      {project.gallery.map((img, index) => (
                          <div 
                             key={index} 
-                            className="relative h-[400px] md:h-[600px] w-full bg-sage/20 overflow-hidden group cursor-zoom-in"
+                            className="break-inside-avoid relative w-full bg-sage/20 overflow-hidden group cursor-zoom-in"
                             onClick={() => setSelectedImage(img)}
                          >
                              <div 
-                                className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                                style={{ backgroundImage: `url('${img}')` }}
-                             />
+                                className="w-full h-auto"
+                             >
+                                <img 
+                                    src={img} 
+                                    alt={`Gallery image ${index + 1}`} 
+                                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                                    loading="lazy"
+                                />
+                             </div>
                          </div>
                      ))}
                  </div>
