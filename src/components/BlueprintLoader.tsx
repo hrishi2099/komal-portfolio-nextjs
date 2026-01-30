@@ -14,7 +14,7 @@ export default function BlueprintLoader() {
       pathLength: 1, 
       opacity: 1,
       transition: { 
-        pathLength: { duration: 0.8, ease: "easeInOut" },
+        pathLength: { duration: 1.5, ease: "easeInOut" },
         opacity: { duration: 0.2 }
       }
     },
@@ -26,23 +26,24 @@ export default function BlueprintLoader() {
   };
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white/90 backdrop-blur-sm pointer-events-none">
-      <div className="w-32 h-32 relative">
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-            {/* Architectural "K" or Structure Outline */}
-            <motion.path
-                d="M 20 20 L 20 80 L 80 80 L 80 20 Z" // Outer Box
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white/95 backdrop-blur-sm pointer-events-none">
+      <div className="w-48 h-32 relative">
+        <svg viewBox="0 0 161 100" className="w-full h-full">
+            {/* 1. Main Golden Rectangle Frame */}
+            <motion.rect
+                x="1" y="1" width="159" height="98"
                 fill="none"
                 stroke="#171717"
-                strokeWidth="2"
+                strokeWidth="1"
                 variants={drawVariant}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
             />
-            <motion.path
-                d="M 20 20 L 80 80" // Cross 1
-                fill="none"
+
+            {/* 2. First Square (Left) */}
+            <motion.line
+                x1="99" y1="1" x2="99" y2="99"
                 stroke="#171717"
                 strokeWidth="1"
                 variants={drawVariant}
@@ -51,9 +52,10 @@ export default function BlueprintLoader() {
                 exit="exit"
                 transition={{ delay: 0.2 }}
             />
-             <motion.path
-                d="M 80 20 L 20 80" // Cross 2
-                fill="none"
+
+            {/* 3. Second Square (Top Right) */}
+            <motion.line
+                x1="99" y1="61" x2="159" y2="61"
                 stroke="#171717"
                 strokeWidth="1"
                 variants={drawVariant}
@@ -62,14 +64,39 @@ export default function BlueprintLoader() {
                 exit="exit"
                 transition={{ delay: 0.4 }}
             />
+
+            {/* 4. Third Square (Right Bottom Right) */}
+            <motion.line
+                x1="123" y1="61" x2="123" y2="99"
+                stroke="#171717"
+                strokeWidth="1"
+                variants={drawVariant}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{ delay: 0.5 }}
+            />
+
+            {/* 5. The Golden Spiral Curve */}
+            <motion.path
+                d="M 1 99 A 98 98 0 0 1 99 1 L 99 1 A 60 60 0 0 1 159 61 L 159 61 A 38 38 0 0 1 123 99"
+                fill="none"
+                stroke="#171717"
+                strokeWidth="1.5"
+                variants={drawVariant}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{ delay: 0.6, duration: 1.5 }}
+            />
         </svg>
         <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="text-center mt-4 text-xs font-mono uppercase tracking-widest text-black"
+            transition={{ delay: 0.8 }}
+            className="text-center mt-6 text-[10px] font-mono uppercase tracking-[0.3em] text-gray-500"
         >
-            Rendering
+            Golden Ratio
         </motion.p>
       </div>
     </div>
