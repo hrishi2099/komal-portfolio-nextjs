@@ -25,13 +25,13 @@ export default function About({ heading, subheading, content, image, yearsExp, p
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-sm font-bold uppercase tracking-widest text-rose mb-4">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-[#CEACA1] mb-4">
             {heading || "Philosophy"}
           </h2>
           <h3 className="text-3xl md:text-5xl font-serif mb-6 leading-tight">
             {subheading || "We believe that good design is obvious. Great design is transparent."}
           </h3>
-          <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+          <p className="text-lg text-gray-600 leading-relaxed mb-6">
             {content || "With a focus on minimalism and functionality, I strive to create spaces that are not only visually stunning but also deeply livable. My approach combines architectural precision with interior warmth, resulting in holistic environments."}
           </p>
           <div className="flex gap-8">
@@ -46,31 +46,34 @@ export default function About({ heading, subheading, content, image, yearsExp, p
           </div>
         </motion.div>
 
-        {/* Image Side - Now acting as Profile Card */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="relative group"
-        >
-           <div className="relative h-[500px] w-full bg-sage/30 dark:bg-gray-800 overflow-hidden">
-                <div 
-                    className="w-full h-full bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-700"
+        {/* Image Side - Scroll Reveal Color */}
+        <div className="relative group">
+           <div className="relative h-[500px] w-full bg-[#CBD5C0]/30 overflow-hidden">
+                <motion.div 
+                    initial={{ filter: "grayscale(100%)", scale: 1.1 }}
+                    whileInView={{ filter: "grayscale(0%)", scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    viewport={{ margin: "-20%" }} // Triggers when 20% into view
+                    className="w-full h-full bg-cover bg-center"
                     style={{ backgroundImage: `url('${image || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2000&auto=format&fit=crop"}')` }} 
                 />
            </div>
            
            {/* Profile Label */}
-           <div className="absolute bottom-6 left-6 bg-white dark:bg-black p-4 shadow-lg max-w-[80%]">
-               <h4 className="text-xl font-serif font-bold text-gray-900 dark:text-white">
+           <motion.div 
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             transition={{ delay: 0.5, duration: 0.8 }}
+             className="absolute bottom-6 left-6 bg-white p-4 shadow-lg max-w-[80%]"
+           >
+               <h4 className="text-xl font-serif font-bold text-gray-900">
                    {profileName || "Ar. Komal Amle"}
                </h4>
                <p className="text-xs uppercase tracking-widest text-gray-500 mt-1">
                    {profileTitle || "Principal Architect"}
                </p>
-           </div>
-        </motion.div>
+           </motion.div>
+        </div>
       </div>
     </section>
   );
