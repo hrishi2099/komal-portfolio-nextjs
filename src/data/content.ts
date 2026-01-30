@@ -50,7 +50,7 @@ export const content: {
     heading: "Philosophy",
     subheading: "We believe that good design is obvious. Great design is transparent.",
     content: "With a focus on minimalism and functionality, I strive to create spaces that are not only visually stunning but also deeply livable. My approach combines architectural precision with interior warmth, resulting in holistic environments.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2000&auto=format&fit=crop", // Profile Photo
+    image: "/komalprofile.jpeg", // Profile Photo
     profileName: "Ar. Komal Amle",
     profileTitle: "Principal Architect",
     stats: {
