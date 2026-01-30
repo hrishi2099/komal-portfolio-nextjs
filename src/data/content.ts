@@ -37,7 +37,6 @@ export const content: {
     social: {
       instagram: string;
       linkedin: string;
-      behance: string;
     };
   };
   projects: Project[];
@@ -68,7 +67,6 @@ export const content: {
     social: {
       instagram: "https://www.instagram.com/traya_haus?igsh=dXQ3bDVyYXVzOXI1",
       linkedin: "https://www.linkedin.com/in/komalamle?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      behance: "https://behance.net",
     }
   },
   projects: [

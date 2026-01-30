@@ -40,7 +40,6 @@ export default function ProjectsPage() {
       <Footer 
         instagram={content.contact.social.instagram}
         linkedin={content.contact.social.linkedin}
-        behance={content.contact.social.behance}
       />
     </main>
   );
