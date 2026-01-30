@@ -1,7 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./main.css"; // Updated import
 import NoiseOverlay from "@/components/NoiseOverlay";
-import LoadingScreen from "@/components/LoadingScreen";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +27,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-900`} 
       >
-        <LoadingScreen />
         <NoiseOverlay />
         {children}
       </body>
