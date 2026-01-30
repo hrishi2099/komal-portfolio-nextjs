@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { clsx } from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
+import TransitionLink from "./TransitionLink";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,13 +46,13 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
           {navLinks.map((link) => (
-            <Link
+            <TransitionLink
               key={link.name}
               href={link.href}
               className="text-sm uppercase tracking-widest text-black hover:text-gray-600 transition-colors"
             >
               {link.name}
-            </Link>
+            </TransitionLink>
           ))}
         </div>
 

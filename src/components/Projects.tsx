@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import TransitionLink from "./TransitionLink";
 import { Project } from "@/data/content";
 
 type Props = {
@@ -24,7 +25,7 @@ export default function Projects({ projects }: Props) {
         {/* Desktop Grid (Hidden on Mobile) */}
         <div className="hidden md:grid md:grid-cols-2 gap-8">
           {featuredProjects.map((project, index) => (
-            <Link key={project.id} href={`/projects/${project.id}`}>
+            <TransitionLink key={project.id} href={`/projects/${project.id}`}>
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -47,14 +48,14 @@ export default function Projects({ projects }: Props) {
                   {project.category}
                 </p>
               </motion.div>
-            </Link>
+            </TransitionLink>
           ))}
         </div>
 
         {/* Mobile Horizontal Scroll (Visible only on Mobile) */}
         <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 -mx-6 px-6 no-scrollbar">
           {featuredProjects.map((project) => (
-            <Link key={project.id} href={`/projects/${project.id}`} className="min-w-[85vw] snap-center">
+            <TransitionLink key={project.id} href={`/projects/${project.id}`} className="min-w-[85vw] snap-center">
               <motion.div 
                 whileTap={{ scale: 0.98 }}
                 className="relative h-[350px] overflow-hidden mb-4 shadow-sm"
@@ -70,19 +71,19 @@ export default function Projects({ projects }: Props) {
               <p className="text-xs text-gray-700 uppercase tracking-wider">
                 {project.category}
               </p>
-            </Link>
+            </TransitionLink>
           ))}
         </div>
         
         <div className="text-center mt-8 md:mt-16">
-            <Link href="/projects">
+            <TransitionLink href="/projects">
                 <motion.button 
                     whileTap={{ scale: 0.95 }}
                     className="px-8 py-3 border border-rose text-black uppercase text-xs tracking-widest hover:bg-rose hover:text-white transition-colors"
                 >
                     View All Projects
                 </motion.button>
-            </Link>
+            </TransitionLink>
         </div>
       </div>
     </section>
