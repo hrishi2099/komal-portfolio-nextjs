@@ -66,7 +66,7 @@ export const content: {
     phone: "+91 9158726789",
     address: "Stature, Sinhgad Road\nPune - 411041",
     social: {
-      instagram: "https://instagram.com",
+      instagram: "https://www.instagram.com/traya_haus?igsh=dXQ3bDVyYXVzOXI1",
       linkedin: "https://linkedin.com",
       behance: "https://behance.net",
     }
