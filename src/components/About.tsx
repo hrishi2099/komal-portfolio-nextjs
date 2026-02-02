@@ -48,13 +48,13 @@ export default function About({ heading, subheading, content, image, yearsExp, p
 
         {/* Image Side - Scroll Reveal Color */}
         <div className="relative group">
-           <div className="relative h-[500px] w-full bg-[#CBD5C0]/30 overflow-hidden">
+           <div className="relative h-[500px] md:h-[600px] w-full bg-[#CBD5C0]/30 overflow-hidden">
                 <motion.div 
                     initial={{ filter: "grayscale(100%)", scale: 1.1 }}
                     whileInView={{ filter: "grayscale(0%)", scale: 1 }}
                     transition={{ duration: 1.5, ease: "easeOut" }}
                     viewport={{ margin: "-20%" }} // Triggers when 20% into view
-                    className="w-full h-full bg-cover bg-center"
+                    className="w-full h-full bg-cover bg-top"
                     style={{ backgroundImage: `url('${image || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2000&auto=format&fit=crop"}')` }} 
                 />
            </div>
