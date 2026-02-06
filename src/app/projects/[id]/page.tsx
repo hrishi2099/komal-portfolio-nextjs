@@ -4,13 +4,13 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, MapPin, Calendar, Ruler } from "lucide-react";
+import { ArrowLeft, MapPin, Calendar, Ruler, FileText, Image as ImageIcon } from "lucide-react";
 import { content } from "@/data/content";
 import { useState } from "react";
 import ImageViewer from "@/components/ImageViewer";
 import ParallaxGallery from "@/components/ParallaxGallery"; // Import new component
 import { useParams } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function ProjectPage() {
   const params = useParams();
@@ -18,6 +18,7 @@ export default function ProjectPage() {
   const projectId = parseInt(id);
   
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [showBlueprint, setShowBlueprint] = useState(false);
   
   const project = content.projects.find(p => p.id === projectId);
 
@@ -34,17 +35,59 @@ export default function ProjectPage() {
       <Navbar />
       <ImageViewer src={selectedImage} onClose={() => setSelectedImage(null)} />
       
-      {/* Hero Image */}
-      <div className="relative h-[60vh] md:h-[80vh] w-full bg-sage/50">
-         <motion.div 
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="absolute inset-0 bg-cover bg-center cursor-pointer"
-            style={{ backgroundImage: `url('${project.image}')` }}
-            onClick={() => setSelectedImage(project.image)}
-         />
+      {/* Hero Image Container */}
+      <div className="relative h-[60vh] md:h-[80vh] w-full bg-sage/50 overflow-hidden">
+         <AnimatePresence mode="wait">
+            {showBlueprint && project.blueprint ? (
+                <motion.div 
+                    key="blueprint"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute inset-0 bg-white p-8 md:p-16 flex items-center justify-center cursor-zoom-in"
+                    onClick={() => setSelectedImage(project.blueprint!)}
+                >
+                    <div className="relative w-full h-full border-2 border-dashed border-gray-300 rounded-lg p-4">
+                        <img 
+                            src={project.blueprint} 
+                            alt="Blueprint" 
+                            className="w-full h-full object-contain filter grayscale contrast-125"
+                        />
+                        <div className="absolute bottom-4 right-4 bg-white px-2 py-1 text-xs font-mono border border-black">
+                            TECHNICAL DRAWING
+                        </div>
+                    </div>
+                </motion.div>
+            ) : (
+                <motion.div 
+                    key="photo"
+                    initial={{ scale: 1.1, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                    className="absolute inset-0 bg-cover bg-center cursor-pointer"
+                    style={{ backgroundImage: `url('${project.image}')` }}
+                    onClick={() => setSelectedImage(project.image)}
+                />
+            )}
+         </AnimatePresence>
+
          <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+         
+         {/* Blueprint Toggle Button */}
+         {project.blueprint && (
+             <div className="absolute top-24 right-6 md:top-32 md:right-12 z-20">
+                 <button 
+                    onClick={() => setShowBlueprint(!showBlueprint)}
+                    className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-white hover:text-black transition-all text-xs font-bold uppercase tracking-widest"
+                 >
+                    {showBlueprint ? <ImageIcon size={14} /> : <FileText size={14} />}
+                    {showBlueprint ? "View Photo" : "View Blueprint"}
+                 </button>
+             </div>
+         )}
+
          <div className="absolute bottom-0 left-0 w-full p-8 md:p-16 text-white pointer-events-none">
             <motion.div 
                 initial={{ y: 20, opacity: 0 }}

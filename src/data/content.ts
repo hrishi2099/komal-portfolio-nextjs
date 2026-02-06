@@ -8,6 +8,7 @@ export type Project = {
   location?: string;
   area?: string;
   gallery?: string[];
+  blueprint?: string; // New optional field
 };
 
 export const content: {
@@ -37,6 +38,7 @@ export const content: {
     social: {
       instagram: string;
       linkedin: string;
+      behance: string;
     };
   };
   projects: Project[];
@@ -50,7 +52,7 @@ export const content: {
     heading: "Philosophy",
     subheading: "We believe that good design is obvious. Great design is transparent.",
     content: "With a focus on minimalism and functionality, I strive to create spaces that are not only visually stunning but also deeply livable. My approach combines architectural precision with interior warmth, resulting in holistic environments.",
-    image: "/komalprofile.jpeg", // Profile Photo
+    image: "/komalprofile.jpeg",
     profileName: "Ar. Komal Amle",
     profileTitle: "Principal Architect",
     stats: {
@@ -67,6 +69,7 @@ export const content: {
     social: {
       instagram: "https://www.instagram.com/traya_haus?igsh=dXQ3bDVyYXVzOXI1",
       linkedin: "https://www.linkedin.com/in/komalamle?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      behance: "https://behance.net",
     }
   },
   projects: [
@@ -127,6 +130,7 @@ export const content: {
       title: "Warje Project",
       category: "Commercial & Office",
       image: "/projects/warje-cover.png",
+      blueprint: "/projects/warje-floor-plan.png", // Added blueprint
       description: "A comprehensive design project in Warje, featuring detailed floor plans and 3D visualizations. This space is optimized for functional flow and aesthetic appeal, incorporating modern office design principles with practical spatial planning.",
       year: "2023",
       location: "Warje, Pune",
