@@ -64,7 +64,7 @@ function GalleryItem({ src, onClick, index }: { src: string, onClick: () => void
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
-      className="relative group cursor-zoom-in overflow-hidden shadow-lg mb-8" // Added mb-8 for spacing in columns
+      className="relative group cursor-zoom-in overflow-hidden shadow-lg mb-8"
       onClick={onClick}
     >
         <div className="w-full">
@@ -81,13 +81,12 @@ function GalleryItem({ src, onClick, index }: { src: string, onClick: () => void
 }
 
 function Mobile3DCarousel({ images, onImageClick }: { images: string[], onImageClick: (src: string) => void }) {
-    // Simple Snap Carousel with 3D perspective effect via CSS/Motion
     return (
         <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 py-8 -mx-6 px-12 no-scrollbar perspective-1000">
             {images.map((img, i) => (
                 <motion.div 
                     key={i}
-                    className="snap-center shrink-0 w-[85vw] aspect-[4/5] md:aspect-video relative shadow-xl rounded-lg overflow-hidden bg-white"
+                    className="snap-center shrink-0 w-[85vw] aspect-[4/5] relative shadow-xl rounded-lg overflow-hidden bg-gray-100"
                     onClick={() => onImageClick(img)}
                     initial={{ scale: 0.9, opacity: 0 }}
                     whileInView={{ 
@@ -95,15 +94,24 @@ function Mobile3DCarousel({ images, onImageClick }: { images: string[], onImageC
                         opacity: 1,
                         rotateY: 0
                     }}
-                    viewport={{ margin: "-10%" }} // Trigger when mostly in view
+                    viewport={{ margin: "-10%" }}
                     transition={{ type: "spring", damping: 20 }}
                 >
-                    <img 
-                        src={img} 
-                        className="w-full h-full object-cover" 
-                        alt="Project" 
-                        loading="lazy"
+                    {/* Blurred Background Layer (Fill) */}
+                    <div 
+                        className="absolute inset-0 bg-cover bg-center blur-xl scale-110 opacity-60"
+                        style={{ backgroundImage: `url('${img}')` }}
                     />
+                    
+                    {/* Sharp Foreground Image (Contain) */}
+                    <div className="absolute inset-0 flex items-center justify-center p-2">
+                        <img 
+                            src={img} 
+                            className="max-w-full max-h-full object-contain shadow-sm" 
+                            alt="Project" 
+                            loading="lazy"
+                        />
+                    </div>
                 </motion.div>
             ))}
         </div>
