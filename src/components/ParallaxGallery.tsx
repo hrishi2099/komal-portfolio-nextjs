@@ -64,10 +64,10 @@ function GalleryItem({ src, onClick, index }: { src: string, onClick: () => void
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
-      className="relative group cursor-zoom-in overflow-hidden shadow-lg"
+      className="relative group cursor-zoom-in overflow-hidden shadow-lg mb-8" // Added mb-8 for spacing in columns
       onClick={onClick}
     >
-        <div className="w-full h-full bg-sage/20">
+        <div className="w-full">
             <img
                 src={src}
                 alt="Gallery"
@@ -87,7 +87,7 @@ function Mobile3DCarousel({ images, onImageClick }: { images: string[], onImageC
             {images.map((img, i) => (
                 <motion.div 
                     key={i}
-                    className="snap-center shrink-0 w-[80vw] h-[50vh] relative shadow-xl rounded-lg overflow-hidden bg-white"
+                    className="snap-center shrink-0 w-[85vw] aspect-[4/5] md:aspect-video relative shadow-xl rounded-lg overflow-hidden bg-white"
                     onClick={() => onImageClick(img)}
                     initial={{ scale: 0.9, opacity: 0 }}
                     whileInView={{ 
