@@ -8,7 +8,7 @@ export type Project = {
   location?: string;
   area?: string;
   gallery?: string[];
-  blueprint?: string; // New optional field
+  blueprint?: string;
 };
 
 export const content: {
@@ -38,7 +38,6 @@ export const content: {
     social: {
       instagram: string;
       linkedin: string;
-      behance: string;
     };
   };
   projects: Project[];
@@ -69,7 +68,6 @@ export const content: {
     social: {
       instagram: "https://www.instagram.com/traya_haus?igsh=dXQ3bDVyYXVzOXI1",
       linkedin: "https://www.linkedin.com/in/komalamle?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      behance: "https://behance.net",
     }
   },
   projects: [
@@ -77,12 +75,16 @@ export const content: {
       id: 1,
       title: "Balaji Temple",
       category: "Religious Architecture",
-      image: "/projects/balaji-temple.jpeg",
+      image: "/projects/balaji-main.jpg", // Updated to the new high-res main image
       description: "Proposed design for the Balaji Temple, focusing on traditional architectural elements blended with modern structural integrity. The design emphasizes spiritual serenity, grand entranceways, and intricate stone carvings reflecting the deity's heritage.",
       year: "2024",
       location: "India",
       area: "TBD",
       gallery: [
+        "/projects/balaji-main.jpg",
+        "/projects/balaji-top-view.jpg",
+        "/projects/balaji-garden-1.jpg",
+        "/projects/balaji-garden-2.jpg",
         "/projects/balaji-temple.jpeg",
         "/projects/balaji-temple-1.jpeg",
         "/projects/balaji-temple-2.jpeg",
@@ -130,7 +132,7 @@ export const content: {
       title: "Warje Project",
       category: "Commercial & Office",
       image: "/projects/warje-cover.png",
-      blueprint: "/projects/warje-floor-plan.png", // Added blueprint
+      blueprint: "/projects/warje-floor-plan.png",
       description: "A comprehensive design project in Warje, featuring detailed floor plans and 3D visualizations. This space is optimized for functional flow and aesthetic appeal, incorporating modern office design principles with practical spatial planning.",
       year: "2023",
       location: "Warje, Pune",
