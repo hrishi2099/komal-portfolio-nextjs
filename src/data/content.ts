@@ -76,7 +76,7 @@ export const content: {
       title: "Balaji Temple",
       category: "Religious Architecture",
       image: "/projects/balaji-main.jpg",
-      blueprint: "/projects/balaji-top-view.jpg", // Enabled Blueprint Toggle
+      blueprint: "/projects/balaji-top-view.jpg",
       description: "Proposed design for the Balaji Temple, focusing on traditional architectural elements blended with modern structural integrity. The design emphasizes spiritual serenity, grand entranceways, and intricate stone carvings reflecting the deity's heritage.",
       year: "2024",
       location: "India",
@@ -184,6 +184,19 @@ export const content: {
         "/projects/suresh-kitchen-2.jpg",
         "/projects/suresh-kitchen-3.jpg",
         "/projects/suresh-kitchen-4.jpg"
+      ]
+    },
+    {
+      id: 7,
+      title: "Bhaskarwar Residence",
+      category: "Residential Architecture",
+      image: "/projects/bhaskarwar-cover.jpg",
+      description: "A contemporary residential project focusing on spatial efficiency and modern aesthetics. (Description pending).",
+      year: "2023",
+      location: "India",
+      area: "TBD",
+      gallery: [
+        "/projects/bhaskarwar-cover.jpg"
       ]
     }
   ]
