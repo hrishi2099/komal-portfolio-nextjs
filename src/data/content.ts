@@ -191,12 +191,14 @@ export const content: {
       title: "Bhaskarwar Residence",
       category: "Residential Architecture",
       image: "/projects/bhaskarwar-cover.jpg",
+      blueprint: "/projects/bhaskarwar-layout.jpg", // Added Blueprint
       description: "A contemporary residential project focusing on spatial efficiency and modern aesthetics. (Description pending).",
       year: "2023",
       location: "India",
       area: "TBD",
       gallery: [
-        "/projects/bhaskarwar-cover.jpg"
+        "/projects/bhaskarwar-cover.jpg",
+        "/projects/bhaskarwar-layout.jpg" // Added to gallery
       ]
     }
   ]
