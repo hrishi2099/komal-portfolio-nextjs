@@ -97,6 +97,7 @@ export const content: {
       title: "Lata Mangeshkar Music Academy",
       category: "Institutional Architecture",
       image: "/projects/lata-academy-6.jpg",
+      blueprint: "/projects/lata-site-plan.jpg", // Added Blueprint
       description: "A tribute to the legendary Nightingale of India. This Music Academy is designed to be a harmonious blend of acoustic excellence and architectural beauty. The structure features dedicated practice halls, a grand auditorium, and open-air performance spaces, all inspired by the rhythm and flow of music.",
       year: "2023",
       location: "India",
@@ -108,7 +109,10 @@ export const content: {
         "/projects/lata-academy-3.jpg",
         "/projects/lata-academy-4.jpg",
         "/projects/lata-academy-5.jpg",
-        "/projects/lata-academy-6.jpg"
+        "/projects/lata-academy-6.jpg",
+        "/projects/lata-site-plan.jpg", // Added plans to gallery too
+        "/projects/lata-section-1.jpg",
+        "/projects/lata-section-2.jpg"
       ]
     },
     {
@@ -191,14 +195,14 @@ export const content: {
       title: "Bhaskarwar Residence",
       category: "Residential Architecture",
       image: "/projects/bhaskarwar-cover.jpg",
-      blueprint: "/projects/bhaskarwar-layout.jpg", // Added Blueprint
+      blueprint: "/projects/bhaskarwar-layout.jpg",
       description: "A contemporary residential project focusing on spatial efficiency and modern aesthetics. (Description pending).",
       year: "2023",
       location: "India",
       area: "TBD",
       gallery: [
         "/projects/bhaskarwar-cover.jpg",
-        "/projects/bhaskarwar-layout.jpg" // Added to gallery
+        "/projects/bhaskarwar-layout.jpg"
       ]
     }
   ]
