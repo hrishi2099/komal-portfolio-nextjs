@@ -110,10 +110,7 @@ export const content: {
         "/projects/lata-academy-3.jpg",
         "/projects/lata-academy-4.jpg",
         "/projects/lata-academy-5.jpg",
-        "/projects/lata-academy-6.jpg",
-        "/projects/lata-site-plan.jpg",
-        "/projects/lata-section-1.jpg",
-        "/projects/lata-section-2.jpg"
+        "/projects/lata-academy-6.jpg"
       ]
     },
     {
@@ -247,7 +244,20 @@ export const content: {
         "/projects/ravi-kitchen-dining-1.jpg",
         "/projects/ravi-kitchen-dining-2.jpg",
         "/projects/ravi-entrance.jpg",
-        "/projects/ravi-entry-option.jpg" // Added option entry
+        "/projects/ravi-entry-option.jpg"
+      ]
+    },
+    {
+      id: 10,
+      title: "Kale Bungalow",
+      category: "Residential Architecture",
+      image: "/projects/kale-cover.jpg",
+      description: "Architectural elevation design for the Kale Bungalow. The façade features clean lines, modern geometry, and a balanced composition of solids and voids. (Description pending).",
+      year: "2023",
+      location: "India",
+      area: "TBD",
+      gallery: [
+        "/projects/kale-cover.jpg"
       ]
     }
   ]
