@@ -110,10 +110,7 @@ export const content: {
         "/projects/lata-academy-3.jpg",
         "/projects/lata-academy-4.jpg",
         "/projects/lata-academy-5.jpg",
-        "/projects/lata-academy-6.jpg",
-        "/projects/lata-site-plan.jpg",
-        "/projects/lata-section-1.jpg",
-        "/projects/lata-section-2.jpg"
+        "/projects/lata-academy-6.jpg"
       ]
     },
     {
@@ -229,6 +226,24 @@ export const content: {
         "/projects/restaurant-5.jpg",
         "/projects/restaurant-6.jpg",
         "/projects/restaurant-7.jpg"
+      ]
+    },
+    {
+      id: 9,
+      title: "Ravi Bungalow",
+      category: "Residential Interior",
+      image: "/projects/ravi-living-1.jpg",
+      description: "A luxurious bungalow design featuring a grand entrance lobby, spacious living room, and a modern open-concept kitchen. The design prioritizes natural light and elegant finishes.",
+      year: "2023",
+      location: "India",
+      area: "TBD",
+      gallery: [
+        "/projects/ravi-living-1.jpg",
+        "/projects/ravi-living-2.jpg",
+        "/projects/ravi-kitchen-1.jpg",
+        "/projects/ravi-kitchen-dining-1.jpg",
+        "/projects/ravi-kitchen-dining-2.jpg",
+        "/projects/ravi-entrance.jpg"
       ]
     }
   ]
