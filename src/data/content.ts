@@ -97,7 +97,7 @@ export const content: {
       title: "Lata Mangeshkar Music Academy",
       category: "Institutional Architecture",
       image: "/projects/lata-academy-6.jpg",
-      blueprint: "/projects/lata-site-plan.jpg", // Added Blueprint
+      blueprint: "/projects/lata-site-plan.jpg",
       description: "A tribute to the legendary Nightingale of India. This Music Academy is designed to be a harmonious blend of acoustic excellence and architectural beauty. The structure features dedicated practice halls, a grand auditorium, and open-air performance spaces, all inspired by the rhythm and flow of music.",
       year: "2023",
       location: "India",
@@ -110,7 +110,7 @@ export const content: {
         "/projects/lata-academy-4.jpg",
         "/projects/lata-academy-5.jpg",
         "/projects/lata-academy-6.jpg",
-        "/projects/lata-site-plan.jpg", // Added plans to gallery too
+        "/projects/lata-site-plan.jpg",
         "/projects/lata-section-1.jpg",
         "/projects/lata-section-2.jpg"
       ]
@@ -129,7 +129,10 @@ export const content: {
         "/projects/shambhu-srushti-1.jpg",
         "/projects/shambhu-srushti-2.jpg",
         "/projects/shambhu-srushti-3.jpg",
-        "/projects/shambhu-srushti-c.jpg"
+        "/projects/shambhu-srushti-c.jpg",
+        "/projects/sm-museum-1.jpg", // Added SM Museum
+        "/projects/sm-museum-2.jpg",
+        "/projects/sm-museum-3.jpg"
       ]
     },
     {
