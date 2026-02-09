@@ -110,7 +110,10 @@ export const content: {
         "/projects/lata-academy-3.jpg",
         "/projects/lata-academy-4.jpg",
         "/projects/lata-academy-5.jpg",
-        "/projects/lata-academy-6.jpg"
+        "/projects/lata-academy-6.jpg",
+        "/projects/lata-site-plan.jpg",
+        "/projects/lata-section-1.jpg",
+        "/projects/lata-section-2.jpg"
       ]
     },
     {
@@ -243,7 +246,8 @@ export const content: {
         "/projects/ravi-kitchen-1.jpg",
         "/projects/ravi-kitchen-dining-1.jpg",
         "/projects/ravi-kitchen-dining-2.jpg",
-        "/projects/ravi-entrance.jpg"
+        "/projects/ravi-entrance.jpg",
+        "/projects/ravi-entry-option.jpg" // Added option entry
       ]
     }
   ]
