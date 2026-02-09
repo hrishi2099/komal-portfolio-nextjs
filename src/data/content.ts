@@ -110,7 +110,10 @@ export const content: {
         "/projects/lata-academy-3.jpg",
         "/projects/lata-academy-4.jpg",
         "/projects/lata-academy-5.jpg",
-        "/projects/lata-academy-6.jpg"
+        "/projects/lata-academy-6.jpg",
+        "/projects/lata-site-plan.jpg",
+        "/projects/lata-section-1.jpg",
+        "/projects/lata-section-2.jpg"
       ]
     },
     {
@@ -257,7 +260,8 @@ export const content: {
       location: "India",
       area: "TBD",
       gallery: [
-        "/projects/kale-cover.jpg"
+        "/projects/kale-cover.jpg",
+        "/projects/kale-elevation.png" // Added PNG version
       ]
     }
   ]
