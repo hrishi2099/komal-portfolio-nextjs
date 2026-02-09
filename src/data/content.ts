@@ -9,6 +9,7 @@ export type Project = {
   area?: string;
   gallery?: string[];
   blueprint?: string;
+  type?: "professional" | "academic"; // New field
 };
 
 export const content: {
@@ -71,10 +72,12 @@ export const content: {
     }
   },
   projects: [
+    // Professional Projects
     {
       id: 1,
       title: "Balaji Temple",
       category: "Religious Architecture",
+      type: "professional",
       image: "/projects/balaji-main.jpg",
       blueprint: "/projects/balaji-final-layout.jpg",
       description: "Proposed design for the Balaji Temple, focusing on traditional architectural elements blended with modern structural integrity. The design emphasizes spiritual serenity, grand entranceways, and intricate stone carvings reflecting the deity's heritage.",
@@ -97,6 +100,7 @@ export const content: {
       id: 2,
       title: "Lata Mangeshkar Music Academy",
       category: "Institutional Architecture",
+      type: "professional",
       image: "/projects/lata-academy-6.jpg",
       blueprint: "/projects/lata-site-plan.jpg",
       description: "A tribute to the legendary Nightingale of India. This Music Academy is designed to be a harmonious blend of acoustic excellence and architectural beauty. The structure features dedicated practice halls, a grand auditorium, and open-air performance spaces, all inspired by the rhythm and flow of music.",
@@ -120,6 +124,7 @@ export const content: {
       id: 3,
       title: "Shambhu Srushti",
       category: "Memorial & Landscape",
+      type: "professional",
       image: "/projects/shambhu-srushti.jpg",
       description: "A monumental project dedicated to Chatrapati Sambhaji Maharaj. This design integrates historical significance with landscape architecture, creating a space for reflection and reverence. The statue stands as a focal point, surrounded by landscaped gardens that narrate the history of the Maratha Empire.",
       year: "2023",
@@ -144,6 +149,7 @@ export const content: {
       id: 4,
       title: "Warje Project",
       category: "Commercial & Office",
+      type: "professional",
       image: "/projects/warje-cover.png",
       blueprint: "/projects/warje-floor-plan.png",
       description: "A comprehensive design project in Warje, featuring detailed floor plans and 3D visualizations. This space is optimized for functional flow and aesthetic appeal, incorporating modern office design principles with practical spatial planning.",
@@ -152,7 +158,6 @@ export const content: {
       area: "TBD",
       gallery: [
         "/projects/warje-cover.png",
-        // Removed broken images
         "/projects/warje-1.png",
         "/projects/warje-2.png",
         "/projects/warje-plan.png",
@@ -163,6 +168,7 @@ export const content: {
       id: 5,
       title: "Modern Bedroom Interior",
       category: "Residential Interior",
+      type: "professional",
       image: "/projects/bedroom-cover.jpg",
       description: "A sophisticated bedroom design that balances comfort with modern luxury. The palette uses soft neutrals and warm lighting to create a restful sanctuary. Custom joinery maximizes storage without cluttering the visual space.",
       year: "2023",
@@ -184,6 +190,7 @@ export const content: {
       id: 6,
       title: "Suresh Khudam Residence",
       category: "Residential Interior",
+      type: "professional",
       image: "/projects/suresh-living-1.jpg",
       description: "Interior design for the Suresh Khudam residence, featuring a modern kitchen and living area. The design emphasizes clean lines, functional storage, and a warm color palette to create a welcoming family atmosphere.",
       year: "2023",
@@ -201,6 +208,7 @@ export const content: {
       id: 7,
       title: "Bhaskarwar Residence",
       category: "Residential Architecture",
+      type: "professional",
       image: "/projects/bhaskarwar-cover.jpg",
       blueprint: "/projects/bhaskarwar-layout.jpg",
       description: "A contemporary residential project focusing on spatial efficiency and modern aesthetics.",
@@ -216,6 +224,7 @@ export const content: {
       id: 8,
       title: "Restaurant Interior",
       category: "Commercial Interior",
+      type: "professional",
       image: "/projects/restaurant-1.jpg",
       description: "A vibrant restaurant design focusing on ambiance and flow. The layout maximizes seating while maintaining privacy for diners. The use of warm lighting and textured materials creates an inviting dining experience.",
       year: "2023",
@@ -235,6 +244,7 @@ export const content: {
       id: 9,
       title: "Ravi Bungalow",
       category: "Residential Interior",
+      type: "professional",
       image: "/projects/ravi-living-1.jpg",
       description: "A luxurious bungalow design featuring a grand entrance lobby, spacious living room, and a modern open-concept kitchen. The design prioritizes natural light and elegant finishes.",
       year: "2023",
@@ -254,6 +264,7 @@ export const content: {
       id: 10,
       title: "Kale Bungalow",
       category: "Residential Architecture",
+      type: "professional",
       image: "/projects/kale-cover.jpg",
       description: "Architectural elevation design for the Kale Bungalow. The façade features clean lines, modern geometry, and a balanced composition of solids and voids.",
       year: "2023",
@@ -268,7 +279,8 @@ export const content: {
       id: 11,
       title: "Jainam Residence",
       category: "Residential Interior",
-      image: "/projects/jainam-bedroom-5.jpg", // Using view 7 as cover
+      type: "professional",
+      image: "/projects/jainam-bedroom-5.jpg",
       description: "Interior design for a bedroom in the Jainam Residence. The design focuses on soft, feminine colors and functional furniture layout to create a cozy and personalized space.",
       year: "2023",
       location: "India",
@@ -279,6 +291,50 @@ export const content: {
         "/projects/jainam-bedroom-3.jpg",
         "/projects/jainam-bedroom-4.jpg",
         "/projects/jainam-bedroom-5.jpg"
+      ]
+    },
+
+    // Academic Projects
+    {
+      id: 12,
+      title: "Tiny Library",
+      category: "Academic Research",
+      type: "academic",
+      image: "/projects/tiny-library.jpg",
+      description: "A conceptual design for a community micro-library. The project explores the relationship between small-scale public infrastructure and community engagement. (Academic Project).",
+      year: "2021",
+      location: "Academic",
+      area: "N/A",
+      gallery: [
+        "/projects/tiny-library.jpg"
+      ]
+    },
+    {
+      id: 13,
+      title: "ABTS Multibasement",
+      category: "Academic Research",
+      type: "academic",
+      image: "/projects/abts-multibasement.jpg",
+      description: "Technical study and design for a multi-level basement parking and transit system. Focuses on structural efficiency and traffic flow analysis. (Academic Project).",
+      year: "2021",
+      location: "Academic",
+      area: "N/A",
+      gallery: [
+        "/projects/abts-multibasement.jpg"
+      ]
+    },
+    {
+      id: 14,
+      title: "FTI Sheet",
+      category: "Academic Research",
+      type: "academic",
+      image: "/projects/fti-sheet.jpg",
+      description: "Architectural study sheet focusing on form, texture, and integration. (Academic Project).",
+      year: "2022",
+      location: "Academic",
+      area: "N/A",
+      gallery: [
+        "/projects/fti-sheet.jpg"
       ]
     }
   ]
