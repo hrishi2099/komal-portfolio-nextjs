@@ -76,7 +76,7 @@ export const content: {
       title: "Balaji Temple",
       category: "Religious Architecture",
       image: "/projects/balaji-main.jpg",
-      blueprint: "/projects/balaji-final-layout.jpg", // Updated Blueprint
+      blueprint: "/projects/balaji-final-layout.jpg",
       description: "Proposed design for the Balaji Temple, focusing on traditional architectural elements blended with modern structural integrity. The design emphasizes spiritual serenity, grand entranceways, and intricate stone carvings reflecting the deity's heritage.",
       year: "2024",
       location: "India",
@@ -84,7 +84,7 @@ export const content: {
       gallery: [
         "/projects/balaji-main.jpg",
         "/projects/balaji-top-view.jpg",
-        "/projects/balaji-final-layout.jpg", // Added to gallery
+        "/projects/balaji-final-layout.jpg",
         "/projects/balaji-garden-1.jpg",
         "/projects/balaji-garden-2.jpg",
         "/projects/balaji-temple.jpeg",
@@ -210,6 +210,25 @@ export const content: {
       gallery: [
         "/projects/bhaskarwar-cover.jpg",
         "/projects/bhaskarwar-layout.jpg"
+      ]
+    },
+    {
+      id: 8,
+      title: "Restaurant Interior",
+      category: "Commercial Interior",
+      image: "/projects/restaurant-1.jpg",
+      description: "A vibrant restaurant design focusing on ambiance and flow. The layout maximizes seating while maintaining privacy for diners. The use of warm lighting and textured materials creates an inviting dining experience.",
+      year: "2023",
+      location: "India",
+      area: "TBD",
+      gallery: [
+        "/projects/restaurant-1.jpg",
+        "/projects/restaurant-2.jpg",
+        "/projects/restaurant-3.jpg",
+        "/projects/restaurant-4.jpg",
+        "/projects/restaurant-5.jpg",
+        "/projects/restaurant-6.jpg",
+        "/projects/restaurant-7.jpg"
       ]
     }
   ]
