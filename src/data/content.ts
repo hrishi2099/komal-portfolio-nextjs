@@ -133,7 +133,7 @@ export const content: {
         "/projects/sm-museum-1.jpg",
         "/projects/sm-museum-2.jpg",
         "/projects/sm-museum-3.jpg",
-        "/projects/museum-interior-1.jpg", // Added Museum Interior
+        "/projects/museum-interior-1.jpg",
         "/projects/museum-interior-2.jpg",
         "/projects/museum-interior-3.jpg",
         "/projects/museum-interior-4.jpg"
@@ -151,8 +151,7 @@ export const content: {
       area: "TBD",
       gallery: [
         "/projects/warje-cover.png",
-        "/projects/warje-view-1.jpg",
-        "/projects/warje-view-2.jpg",
+        // Removed broken images: warje-view-1.jpg, warje-view-2.jpg
         "/projects/warje-1.png",
         "/projects/warje-2.png",
         "/projects/warje-plan.png",
