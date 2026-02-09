@@ -130,9 +130,13 @@ export const content: {
         "/projects/shambhu-srushti-2.jpg",
         "/projects/shambhu-srushti-3.jpg",
         "/projects/shambhu-srushti-c.jpg",
-        "/projects/sm-museum-1.jpg", // Added SM Museum
+        "/projects/sm-museum-1.jpg",
         "/projects/sm-museum-2.jpg",
-        "/projects/sm-museum-3.jpg"
+        "/projects/sm-museum-3.jpg",
+        "/projects/museum-interior-1.jpg", // Added Museum Interior
+        "/projects/museum-interior-2.jpg",
+        "/projects/museum-interior-3.jpg",
+        "/projects/museum-interior-4.jpg"
       ]
     },
     {
