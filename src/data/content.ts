@@ -261,7 +261,24 @@ export const content: {
       area: "TBD",
       gallery: [
         "/projects/kale-cover.jpg",
-        "/projects/kale-elevation.png" // Added PNG version
+        "/projects/kale-elevation.png"
+      ]
+    },
+    {
+      id: 11,
+      title: "Jainam Residence",
+      category: "Residential Interior",
+      image: "/projects/jainam-bedroom-5.jpg", // Using view 7 as cover
+      description: "Interior design for a bedroom in the Jainam Residence. The design focuses on soft, feminine colors and functional furniture layout to create a cozy and personalized space.",
+      year: "2023",
+      location: "India",
+      area: "TBD",
+      gallery: [
+        "/projects/jainam-bedroom-1.jpg",
+        "/projects/jainam-bedroom-2.jpg",
+        "/projects/jainam-bedroom-3.jpg",
+        "/projects/jainam-bedroom-4.jpg",
+        "/projects/jainam-bedroom-5.jpg"
       ]
     }
   ]
