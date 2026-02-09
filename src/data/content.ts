@@ -76,7 +76,7 @@ export const content: {
       title: "Balaji Temple",
       category: "Religious Architecture",
       image: "/projects/balaji-main.jpg",
-      blueprint: "/projects/balaji-top-view.jpg",
+      blueprint: "/projects/balaji-final-layout.jpg", // Updated Blueprint
       description: "Proposed design for the Balaji Temple, focusing on traditional architectural elements blended with modern structural integrity. The design emphasizes spiritual serenity, grand entranceways, and intricate stone carvings reflecting the deity's heritage.",
       year: "2024",
       location: "India",
@@ -84,6 +84,7 @@ export const content: {
       gallery: [
         "/projects/balaji-main.jpg",
         "/projects/balaji-top-view.jpg",
+        "/projects/balaji-final-layout.jpg", // Added to gallery
         "/projects/balaji-garden-1.jpg",
         "/projects/balaji-garden-2.jpg",
         "/projects/balaji-temple.jpeg",
@@ -151,7 +152,7 @@ export const content: {
       area: "TBD",
       gallery: [
         "/projects/warje-cover.png",
-        // Removed broken images: warje-view-1.jpg, warje-view-2.jpg
+        // Removed broken images
         "/projects/warje-1.png",
         "/projects/warje-2.png",
         "/projects/warje-plan.png",
