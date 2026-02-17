@@ -3,6 +3,7 @@ import "./main.css"; // Updated import
 import NoiseOverlay from "@/components/NoiseOverlay";
 import { TransitionProvider } from "@/components/TransitionContext";
 import BlueprintLoader from "@/components/BlueprintLoader";
+import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
             <BlueprintLoader />
             <NoiseOverlay />
             {children}
+            <Analytics />
         </TransitionProvider>
       </body>
     </html>
