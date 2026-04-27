@@ -12,6 +12,7 @@ type Props = {
 
 export default function ImageViewer({ src, onClose }: Props) {
   const [scale, setScale] = useState(1);
+  const scaleRef = useRef(1); // Use ref to track scale for the wheel event listener
   const containerRef = useRef<HTMLDivElement>(null);
   const [dragConstraints, setDragConstraints] = useState({ left: 0, right: 0, top: 0, bottom: 0 });
   
@@ -42,12 +43,14 @@ export default function ImageViewer({ src, onClose }: Props) {
         if (e.key === "Escape") onClose();
       };
 
-      // Mouse wheel zoom support
+      // Mouse wheel zoom support using ref for current scale
       const handleWheel = (e: WheelEvent) => {
+        if (e.ctrlKey) return; // Allow browser zoom if ctrl is pressed
         e.preventDefault();
-        const delta = e.deltaY * -0.005; // Sensitivity
-        const newScale = Math.min(Math.max(scale + delta, 1), 4);
+        const delta = e.deltaY * -0.005; 
+        const newScale = Math.min(Math.max(scaleRef.current + delta, 1), 4);
         setScale(newScale);
+        scaleRef.current = newScale;
       };
 
       window.addEventListener("keydown", handleKeyDown);
@@ -58,9 +61,10 @@ export default function ImageViewer({ src, onClose }: Props) {
         window.removeEventListener("keydown", handleKeyDown);
         window.removeEventListener("wheel", handleWheel);
         setScale(1); 
+        scaleRef.current = 1;
       };
     }
-  }, [src, onClose, scale]);
+  }, [src, onClose]);
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (e.touches.length === 2) {
@@ -71,8 +75,9 @@ export default function ImageViewer({ src, onClose }: Props) {
 
       if (lastDist.current > 0) {
         const delta = dist - lastDist.current;
-        const newScale = Math.min(Math.max(scale + delta * 0.01, 1), 4);
+        const newScale = Math.min(Math.max(scaleRef.current + delta * 0.01, 1), 4);
         setScale(newScale);
+        scaleRef.current = newScale;
       }
       lastDist.current = dist;
     }
@@ -80,6 +85,13 @@ export default function ImageViewer({ src, onClose }: Props) {
 
   const handleTouchEnd = () => {
     lastDist.current = 0;
+  };
+
+  // Helper for manual buttons to keep ref in sync
+  const updateScaleManual = (newVal: number) => {
+    const clamped = Math.min(Math.max(newVal, 1), 4);
+    setScale(clamped);
+    scaleRef.current = clamped;
   };
 
   return (
@@ -95,9 +107,9 @@ export default function ImageViewer({ src, onClose }: Props) {
           {/* Top Controls */}
           <div className="absolute top-6 right-6 flex items-center gap-4 z-[101]" onClick={(e) => e.stopPropagation()}>
             <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full backdrop-blur-md border border-white/20 text-white/70 text-xs">
-               <button onClick={() => setScale(Math.max(scale - 0.5, 1))} className="hover:text-white transition-colors"><ZoomOut size={16} /></button>
+               <button onClick={() => updateScaleManual(scale - 0.5)} className="hover:text-white transition-colors"><ZoomOut size={16} /></button>
                <span className="w-12 text-center font-mono">{Math.round(scale * 100)}%</span>
-               <button onClick={() => setScale(Math.min(scale + 0.5, 4))} className="hover:text-white transition-colors"><ZoomIn size={16} /></button>
+               <button onClick={() => updateScaleManual(scale + 0.5)} className="hover:text-white transition-colors"><ZoomIn size={16} /></button>
             </div>
             <button 
                 onClick={onClose} 
