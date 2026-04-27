@@ -152,6 +152,7 @@ export default function ImageViewer({ src, onClose }: Props) {
                     src={src}
                     alt="Full View"
                     fill
+                    unoptimized
                     className="object-contain select-none p-4 md:p-10"
                     priority
                     quality={100}
