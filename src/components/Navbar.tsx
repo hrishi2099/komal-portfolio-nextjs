@@ -77,14 +77,14 @@ export default function Navbar() {
           >
             <div className="flex flex-col items-center justify-center h-full space-y-8">
               {navLinks.map((link) => (
-                <Link
+                <TransitionLink
                   key={link.name}
                   href={link.href}
                   className="text-2xl font-serif text-black hover:text-gray-600 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
-                </Link>
+                </TransitionLink>
               ))}
             </div>
           </motion.div>
