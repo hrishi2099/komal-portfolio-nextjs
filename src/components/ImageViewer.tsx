@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ZoomIn, ZoomOut, Maximize } from "lucide-react";
+import { X, ZoomIn, ZoomOut, Maximize, MousePointer2 } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
@@ -37,20 +37,32 @@ export default function ImageViewer({ src, onClose }: Props) {
   useEffect(() => {
     if (src) {
       document.body.style.overflow = "hidden";
+      
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === "Escape") onClose();
       };
+
+      // Mouse wheel zoom support
+      const handleWheel = (e: WheelEvent) => {
+        e.preventDefault();
+        const delta = e.deltaY * -0.005; // Sensitivity
+        const newScale = Math.min(Math.max(scale + delta, 1), 4);
+        setScale(newScale);
+      };
+
       window.addEventListener("keydown", handleKeyDown);
+      window.addEventListener("wheel", handleWheel, { passive: false });
+      
       return () => {
         document.body.style.overflow = "auto";
         window.removeEventListener("keydown", handleKeyDown);
+        window.removeEventListener("wheel", handleWheel);
         setScale(1); 
       };
     }
-  }, [src, onClose]);
+  }, [src, onClose, scale]);
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    // Only handle pinch if two fingers are present
     if (e.touches.length === 2) {
       const dist = Math.hypot(
         e.touches[0].pageX - e.touches[1].pageX,
@@ -128,13 +140,18 @@ export default function ImageViewer({ src, onClose }: Props) {
             </motion.div>
           </motion.div>
 
-          {/* Instructions Overlay */}
+          {/* Dynamic Instructions Overlay */}
           <motion.div 
-            animate={{ opacity: scale > 1 ? 0 : 1 }}
+            animate={{ opacity: scale > 1 ? 0.3 : 1 }}
             className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
           >
              <div className="text-white/30 text-[10px] uppercase tracking-[0.3em] flex items-center gap-2">
-                <Maximize size={12} /> Pinch to zoom & Drag to pan
+                <span className="hidden md:flex items-center gap-2">
+                    <MousePointer2 size={12} /> Scroll to zoom • Drag to pan
+                </span>
+                <span className="md:hidden flex items-center gap-2">
+                    <Maximize size={12} /> Pinch to zoom & Drag to pan
+                </span>
              </div>
           </motion.div>
         </motion.div>
