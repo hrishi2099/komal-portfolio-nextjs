@@ -13,9 +13,26 @@ type Props = {
 export default function ImageViewer({ src, onClose }: Props) {
   const [scale, setScale] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [dragConstraints, setDragConstraints] = useState({ left: 0, right: 0, top: 0, bottom: 0 });
   
   // Track pinch distance for touch devices
   const lastDist = useRef(0);
+
+  // Calculate drag constraints whenever scale changes
+  useEffect(() => {
+    if (containerRef.current) {
+      const { width, height } = containerRef.current.getBoundingClientRect();
+      const xMargin = Math.max(0, (width * scale - width) / 2);
+      const yMargin = Math.max(0, (height * scale - height) / 2);
+      
+      setDragConstraints({
+        left: -xMargin,
+        right: xMargin,
+        top: -yMargin,
+        bottom: yMargin
+      });
+    }
+  }, [scale]);
 
   useEffect(() => {
     if (src) {
@@ -27,12 +44,13 @@ export default function ImageViewer({ src, onClose }: Props) {
       return () => {
         document.body.style.overflow = "auto";
         window.removeEventListener("keydown", handleKeyDown);
-        setScale(1); // Reset scale when closing
+        setScale(1); 
       };
     }
   }, [src, onClose]);
 
   const handleTouchMove = (e: React.TouchEvent) => {
+    // Only handle pinch if two fingers are present
     if (e.touches.length === 2) {
       const dist = Math.hypot(
         e.touches[0].pageX - e.touches[1].pageX,
@@ -41,7 +59,6 @@ export default function ImageViewer({ src, onClose }: Props) {
 
       if (lastDist.current > 0) {
         const delta = dist - lastDist.current;
-        // Sensitivity factor 0.01, capped between 1x and 4x
         const newScale = Math.min(Math.max(scale + delta * 0.01, 1), 4);
         setScale(newScale);
       }
@@ -60,7 +77,7 @@ export default function ImageViewer({ src, onClose }: Props) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 touch-none"
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-0 touch-none"
           onClick={onClose}
         >
           {/* Top Controls */}
@@ -91,25 +108,27 @@ export default function ImageViewer({ src, onClose }: Props) {
           >
             <motion.div
               drag={scale > 1}
-              dragConstraints={containerRef}
+              dragConstraints={dragConstraints}
               dragElastic={0.1}
               animate={{ scale }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className={`relative w-full h-full flex items-center justify-center ${scale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-default"}`}
             >
-              <Image
-                src={src}
-                alt="Full View"
-                fill
-                className="object-contain pointer-events-none select-none"
-                priority
-                quality={100}
-                sizes="100vw"
-              />
+              <div className="relative w-full h-full p-4 md:p-10 flex items-center justify-center">
+                <Image
+                    src={src}
+                    alt="Full View"
+                    fill
+                    className="object-contain pointer-events-none select-none p-4 md:p-10"
+                    priority
+                    quality={100}
+                    sizes="100vw"
+                />
+              </div>
             </motion.div>
           </motion.div>
 
-          {/* Instructions Overlay (Auto-hides if zoomed) */}
+          {/* Instructions Overlay */}
           <motion.div 
             animate={{ opacity: scale > 1 ? 0 : 1 }}
             className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
