@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { clsx } from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
-import TransitionLink from "./TransitionLink";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,10 +19,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#hero" },
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/#hero" },
+    { name: "About", href: "/#about" },
+    { name: "Projects", href: "/#projects" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -46,19 +45,19 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
           {navLinks.map((link) => (
-            <TransitionLink
+            <Link
               key={link.name}
               href={link.href}
               className="text-sm uppercase tracking-widest text-black hover:text-gray-600 transition-colors"
             >
               {link.name}
-            </TransitionLink>
+            </Link>
           ))}
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2"
+          className="md:hidden p-2 text-black"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -73,18 +72,24 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "100vh" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden fixed inset-0 top-[60px] bg-sage z-40 overflow-hidden"
+            className="md:hidden fixed inset-0 top-0 bg-white z-[60] overflow-hidden"
           >
-            <div className="flex flex-col items-center justify-center h-full space-y-8">
+            <div className="flex flex-col items-center justify-center h-full space-y-8 relative">
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="absolute top-6 right-6 p-2 text-black"
+              >
+                <X size={32} />
+              </button>
               {navLinks.map((link) => (
-                <TransitionLink
+                <Link
                   key={link.name}
                   href={link.href}
-                  className="text-2xl font-serif text-black hover:text-gray-600 transition-colors"
+                  className="text-3xl font-serif text-black hover:text-gray-600 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
-                </TransitionLink>
+                </Link>
               ))}
             </div>
           </motion.div>
