@@ -12,7 +12,7 @@ type Props = {
 
 export default function ImageViewer({ src, onClose }: Props) {
   const [scale, setScale] = useState(1);
-  const scaleRef = useRef(1); // Use ref to track scale for the wheel event listener
+  const scaleRef = useRef(1); 
   const containerRef = useRef<HTMLDivElement>(null);
   const [dragConstraints, setDragConstraints] = useState({ left: 0, right: 0, top: 0, bottom: 0 });
   
@@ -23,6 +23,7 @@ export default function ImageViewer({ src, onClose }: Props) {
   useEffect(() => {
     if (containerRef.current) {
       const { width, height } = containerRef.current.getBoundingClientRect();
+      // Calculate margins based on the scaled size
       const xMargin = Math.max(0, (width * scale - width) / 2);
       const yMargin = Math.max(0, (height * scale - height) / 2);
       
@@ -43,11 +44,10 @@ export default function ImageViewer({ src, onClose }: Props) {
         if (e.key === "Escape") onClose();
       };
 
-      // Mouse wheel zoom support using ref for current scale
       const handleWheel = (e: WheelEvent) => {
-        if (e.ctrlKey) return; // Allow browser zoom if ctrl is pressed
+        if (e.ctrlKey) return; 
         e.preventDefault();
-        const delta = e.deltaY * -0.005; 
+        const delta = e.deltaY * -0.01; // Increased sensitivity
         const newScale = Math.min(Math.max(scaleRef.current + delta, 1), 4);
         setScale(newScale);
         scaleRef.current = newScale;
@@ -87,11 +87,18 @@ export default function ImageViewer({ src, onClose }: Props) {
     lastDist.current = 0;
   };
 
-  // Helper for manual buttons to keep ref in sync
   const updateScaleManual = (newVal: number) => {
     const clamped = Math.min(Math.max(newVal, 1), 4);
     setScale(clamped);
     scaleRef.current = clamped;
+  };
+
+  const handleDoubleClick = () => {
+    if (scale > 1) {
+        updateScaleManual(1);
+    } else {
+        updateScaleManual(2);
+    }
   };
 
   return (
@@ -101,15 +108,15 @@ export default function ImageViewer({ src, onClose }: Props) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-0 touch-none"
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-0 touch-none cursor-zoom-out"
           onClick={onClose}
         >
           {/* Top Controls */}
           <div className="absolute top-6 right-6 flex items-center gap-4 z-[101]" onClick={(e) => e.stopPropagation()}>
             <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full backdrop-blur-md border border-white/20 text-white/70 text-xs">
-               <button onClick={() => updateScaleManual(scale - 0.5)} className="hover:text-white transition-colors"><ZoomOut size={16} /></button>
-               <span className="w-12 text-center font-mono">{Math.round(scale * 100)}%</span>
-               <button onClick={() => updateScaleManual(scale + 0.5)} className="hover:text-white transition-colors"><ZoomIn size={16} /></button>
+               <button onClick={() => updateScaleManual(scale - 0.5)} className="hover:text-white transition-colors p-1"><ZoomOut size={16} /></button>
+               <span className="w-12 text-center font-mono select-none">{Math.round(scale * 100)}%</span>
+               <button onClick={() => updateScaleManual(scale + 0.5)} className="hover:text-white transition-colors p-1"><ZoomIn size={16} /></button>
             </div>
             <button 
                 onClick={onClose} 
@@ -129,21 +136,23 @@ export default function ImageViewer({ src, onClose }: Props) {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
             onClick={(e) => e.stopPropagation()}
+            onDoubleClick={handleDoubleClick}
           >
             <motion.div
-              drag={scale > 1}
+              drag // Always allow drag, constraints handle the actual movement
               dragConstraints={dragConstraints}
               dragElastic={0.1}
+              dragMomentum={false}
               animate={{ scale }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className={`relative w-full h-full flex items-center justify-center ${scale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-default"}`}
             >
-              <div className="relative w-full h-full p-4 md:p-10 flex items-center justify-center">
+              <div className="relative w-full h-full p-4 md:p-10 flex items-center justify-center pointer-events-none">
                 <Image
                     src={src}
                     alt="Full View"
                     fill
-                    className="object-contain pointer-events-none select-none p-4 md:p-10"
+                    className="object-contain select-none p-4 md:p-10"
                     priority
                     quality={100}
                     sizes="100vw"
@@ -159,7 +168,7 @@ export default function ImageViewer({ src, onClose }: Props) {
           >
              <div className="text-white/30 text-[10px] uppercase tracking-[0.3em] flex items-center gap-2">
                 <span className="hidden md:flex items-center gap-2">
-                    <MousePointer2 size={12} /> Scroll to zoom • Drag to pan
+                    <MousePointer2 size={12} /> Scroll to zoom • Drag to pan • Double-click to reset
                 </span>
                 <span className="md:hidden flex items-center gap-2">
                     <Maximize size={12} /> Pinch to zoom & Drag to pan
