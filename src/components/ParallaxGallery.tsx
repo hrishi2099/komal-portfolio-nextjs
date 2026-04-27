@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 
 type Props = {
   images: string[];
@@ -67,12 +68,13 @@ function GalleryItem({ src, onClick, index }: { src: string, onClick: () => void
       className="relative group cursor-zoom-in overflow-hidden shadow-lg mb-8"
       onClick={onClick}
     >
-        <div className="w-full">
-            <img
+        <div className="w-full relative aspect-[4/3]">
+            <Image
                 src={src}
                 alt="Gallery"
-                className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-105"
-                loading="lazy"
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
             />
         </div>
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
@@ -98,19 +100,27 @@ function Mobile3DCarousel({ images, onImageClick }: { images: string[], onImageC
                     transition={{ type: "spring", damping: 20 }}
                 >
                     {/* Blurred Background Layer (Fill) */}
-                    <div 
-                        className="absolute inset-0 bg-cover bg-center blur-xl scale-110 opacity-60"
-                        style={{ backgroundImage: `url('${img}')` }}
-                    />
+                    <div className="absolute inset-0 blur-xl scale-110 opacity-60">
+                        <Image
+                            src={img}
+                            alt="Project Background"
+                            fill
+                            className="object-cover"
+                            sizes="10px"
+                        />
+                    </div>
                     
                     {/* Sharp Foreground Image (Contain) */}
                     <div className="absolute inset-0 flex items-center justify-center p-2">
-                        <img 
-                            src={img} 
-                            className="max-w-full max-h-full object-contain shadow-sm" 
-                            alt="Project" 
-                            loading="lazy"
-                        />
+                        <div className="relative w-full h-full">
+                            <Image 
+                                src={img} 
+                                alt="Project"
+                                fill
+                                className="object-contain shadow-sm"
+                                sizes="85vw"
+                            />
+                        </div>
                     </div>
                 </motion.div>
             ))}

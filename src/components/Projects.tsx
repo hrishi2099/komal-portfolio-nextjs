@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+import Image from "next/image";
 import TransitionLink from "./TransitionLink";
 import { Project } from "@/data/content";
 
@@ -35,10 +35,17 @@ export default function Projects({ projects }: Props) {
                 className="group cursor-pointer"
               >
                 <div className="relative h-[400px] overflow-hidden mb-4">
-                  <div
-                    className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                    style={{ backgroundImage: `url('${project.image}')` }}
-                  />
+                  <motion.div
+                    className="relative w-full h-full transition-transform duration-700 group-hover:scale-105"
+                  >
+                    <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </motion.div>
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 </div>
                 <h4 className="text-2xl font-serif mb-1 text-black group-hover:underline decoration-1 underline-offset-4">
@@ -60,9 +67,12 @@ export default function Projects({ projects }: Props) {
                 whileTap={{ scale: 0.98 }}
                 className="relative h-[350px] overflow-hidden mb-4 shadow-sm"
               >
-                <div
-                  className="w-full h-full bg-cover bg-center"
-                  style={{ backgroundImage: `url('${project.image}')` }}
+                <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                    sizes="85vw"
                 />
               </motion.div>
               <h4 className="text-xl font-serif mb-1 text-black">

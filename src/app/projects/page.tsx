@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Link from "next/link";
+import Image from "next/image";
 import { content } from "@/data/content";
 import TransitionLink from "@/components/TransitionLink";
 import { motion } from "framer-motion";
@@ -38,9 +38,12 @@ export default function ProjectsPage() {
                     transition={{ delay: index * 0.1 }}
                 >
                     <div className="relative h-[400px] overflow-hidden mb-4">
-                        <div
-                        className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                        style={{ backgroundImage: `url('${project.image}')` }}
+                        <Image
+                            src={project.image}
+                            alt={project.title}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, 50vw"
                         />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                     </div>
@@ -72,9 +75,12 @@ export default function ProjectsPage() {
                         transition={{ delay: index * 0.1 }}
                     >
                         <div className="relative h-[300px] overflow-hidden mb-4 grayscale group-hover:grayscale-0 transition-all duration-500">
-                            <div
-                            className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                            style={{ backgroundImage: `url('${project.image}')` }}
+                            <Image
+                                src={project.image}
+                                alt={project.title}
+                                fill
+                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                sizes="(max-width: 768px) 100vw, 33vw"
                             />
                         </div>
                         <h4 className="text-xl font-serif mb-1 text-black group-hover:underline decoration-1 underline-offset-4">

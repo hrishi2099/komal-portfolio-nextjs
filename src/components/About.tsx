@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 type Props = {
     heading?: string;
@@ -54,9 +55,16 @@ export default function About({ heading, subheading, content, image, yearsExp, p
                     whileInView={{ filter: "grayscale(0%)", scale: 1 }}
                     transition={{ duration: 1.5, ease: "easeOut" }}
                     viewport={{ margin: "-20%" }} // Triggers when 20% into view
-                    className="w-full h-full bg-cover bg-top"
-                    style={{ backgroundImage: `url('${image || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2000&auto=format&fit=crop"}')` }} 
-                />
+                    className="relative w-full h-full"
+                >
+                    <Image
+                        src={image || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2000&auto=format&fit=crop"}
+                        alt={profileName || "Ar. Komal Amle"}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                </motion.div>
            </div>
            
            {/* Profile Label */}

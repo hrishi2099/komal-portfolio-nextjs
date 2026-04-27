@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 
 type Props = {
   heading?: string;
@@ -55,6 +56,8 @@ export default function Hero({ heading, subheading, backgroundImage }: Props) {
   const rawSubheading = subheading || "Architecture & Interior Design Portfolio of Komal. Crafting environments that inspire and endure.";
   const subheadingWords = rawSubheading.split(" ");
 
+  const bgImage = backgroundImage || "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070&auto=format&fit=crop";
+
   return (
     <section
       id="hero"
@@ -65,9 +68,17 @@ export default function Hero({ heading, subheading, backgroundImage }: Props) {
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 10, ease: "linear" }} // Subtle zoom effect
-          className="w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: `url('${backgroundImage || "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070&auto=format&fit=crop"}')` }} 
-        />
+          className="relative w-full h-full"
+        >
+          <Image
+            src={bgImage}
+            alt="Hero Background"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+        </motion.div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10 text-center">

@@ -4,11 +4,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, MapPin, Calendar, Ruler, FileText, Image as ImageIcon } from "lucide-react";
 import { content } from "@/data/content";
 import { useState } from "react";
 import ImageViewer from "@/components/ImageViewer";
-import ParallaxGallery from "@/components/ParallaxGallery"; // Import new component
+import ParallaxGallery from "@/components/ParallaxGallery";
 import { useParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -49,10 +50,12 @@ export default function ProjectPage() {
                     onClick={() => setSelectedImage(project.blueprint!)}
                 >
                     <div className="relative w-full h-full border-2 border-dashed border-gray-300 rounded-lg p-4">
-                        <img 
+                        <Image 
                             src={project.blueprint} 
                             alt="Blueprint" 
-                            className="w-full h-full object-contain filter grayscale contrast-125"
+                            fill
+                            className="object-contain filter grayscale contrast-125 p-4"
+                            sizes="100vw"
                         />
                         <div className="absolute bottom-4 right-4 bg-white px-2 py-1 text-xs font-mono border border-black">
                             TECHNICAL DRAWING
@@ -66,10 +69,18 @@ export default function ProjectPage() {
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1.2, ease: "easeOut" }}
-                    className="absolute inset-0 bg-cover bg-center cursor-pointer"
-                    style={{ backgroundImage: `url('${project.image}')` }}
+                    className="absolute inset-0 cursor-pointer"
                     onClick={() => setSelectedImage(project.image)}
-                />
+                >
+                    <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        priority
+                        className="object-cover"
+                        sizes="100vw"
+                    />
+                </motion.div>
             )}
          </AnimatePresence>
 
