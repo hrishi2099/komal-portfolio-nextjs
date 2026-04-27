@@ -33,6 +33,7 @@ export default function Projects({ projects }: Props) {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 viewport={{ once: true }}
                 className="group cursor-pointer"
+                style={{ willChange: "transform, opacity" }}
               >
                 <div className="relative h-[400px] overflow-hidden mb-4">
                   <motion.div

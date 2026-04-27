@@ -43,12 +43,12 @@ export default function ParallaxGallery({ images, onImageClick }: Props) {
   return (
     <div ref={containerRef} className="relative min-h-screen">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-        <motion.div style={{ y: y1 }} className="flex flex-col gap-8 md:gap-16">
+        <motion.div style={{ y: y1, willChange: "transform" }} className="flex flex-col gap-8 md:gap-16">
           {col1.map((img, i) => (
             <GalleryItem key={`col1-${i}`} src={img} onClick={() => onImageClick(img)} index={i} />
           ))}
         </motion.div>
-        <motion.div style={{ y: y2 }} className="flex flex-col gap-8 md:gap-16 md:mt-32">
+        <motion.div style={{ y: y2, willChange: "transform" }} className="flex flex-col gap-8 md:gap-16 md:mt-32">
           {col2.map((img, i) => (
             <GalleryItem key={`col2-${i}`} src={img} onClick={() => onImageClick(img)} index={i} />
           ))}
